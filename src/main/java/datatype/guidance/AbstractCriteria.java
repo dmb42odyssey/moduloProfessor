@@ -1,0 +1,46 @@
+package datatype.guidance;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class AbstractCriteria {
+
+    protected String id;
+    protected String name;
+    protected String description;
+    protected List<String> situation;
+    protected ConformanceLevel conformanceLevel;
+    protected ConformanceLevel currentConformanceLevel;
+    protected boolean isApplicable;
+    protected boolean isSufficient;
+
+    public AbstractCriteria(String id, String name, String description)
+    {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        situation = new ArrayList<>();
+        situation.add("A");
+        currentConformanceLevel = null;
+        setIsApplicable(true); // Default
+    }
+
+    public boolean checkIsSufficient()
+    {
+        return true;
+    }
+
+    public String getId() { return id;}
+    public void setName(String name) { this.name = name;}
+    public String getName() { return name; }
+    public void setDescription(String description) { this.description = description; }
+    public String getDescription() { return description; }
+    public ConformanceLevel getConformanceLevel() { return conformanceLevel; }
+    public void setCurrentConformanceLevel(ConformanceLevel currentConformanceLevel) { this.currentConformanceLevel = currentConformanceLevel; }
+    public ConformanceLevel getCurrentConformanceLevel() { return currentConformanceLevel; }
+    public void setIsApplicable(boolean isApplicable) { this.isApplicable = isApplicable; }
+    public boolean getIsApplicable() { return isApplicable; }
+    public void setIsSufficient(boolean isSufficient) { this.isSufficient = isSufficient; }
+    public boolean getIsSufficient() { return isSufficient; }
+    public List<String> getSituation() { return situation; }
+}
