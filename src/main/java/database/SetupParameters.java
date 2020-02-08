@@ -1,8 +1,8 @@
 package database;
 
-import datatype.guidance.AbstractCriteria;
-import datatype.guidance.AbstractGuideline;
-import datatype.guidance.AbstractPrinciple;
+import datatype.accessibility.AbstractCriteria;
+import datatype.accessibility.AbstractGuideline;
+import datatype.accessibility.AbstractPrinciple;
 
 import java.util.*;
 
@@ -26,15 +26,15 @@ public class SetupParameters {
 
         for(String principle : ValidPrincipleList)
         {
-            AbstractPrinciple newPrinciple = PrincipleSetup.selectPrincipleInitialization(principle);
+            AbstractPrinciple newPrinciple = PrincipleDatabase.selectPrincipleInitialization(principle);
 
             for(String guideline : principleToGuidelines.get(principle))
             {
-                AbstractGuideline newGuideline = GuidelineSetup.GuidelineInitialization(principle,guideline);
+                AbstractGuideline newGuideline = GuidelineDatabase.GuidelineInitialization(principle,guideline);
 
                 for(String criteria : guideLineToCriterias.get(guideline))
                 {
-                    AbstractCriteria newCriteria = CriteriaSetup.CriteriaInitialization(criteria);
+                    AbstractCriteria newCriteria = CriteriaDatabase.CriteriaInitialization(criteria);
                     newGuideline.getCriteriaList().add(newCriteria);
                 }
 
@@ -50,35 +50,35 @@ public class SetupParameters {
     private List<String> buildPrincipleList()
     {
         List<String> principleList = new ArrayList<>();
-        principleList.add(PrincipleSetup.PrincipleConstants.Perceivable);
-        principleList.add(PrincipleSetup.PrincipleConstants.Operable);
-        principleList.add(PrincipleSetup.PrincipleConstants.Understandable);
-        principleList.add(PrincipleSetup.PrincipleConstants.Robust);
+        principleList.add(PrincipleDatabase.PrincipleConstants.Perceivable);
+        principleList.add(PrincipleDatabase.PrincipleConstants.Operable);
+        principleList.add(PrincipleDatabase.PrincipleConstants.Understandable);
+        principleList.add(PrincipleDatabase.PrincipleConstants.Robust);
         return principleList;
     }
 
     private Map<String, List<String>> buildPrincipleToGuidelinesMap()
     {
         Map<String, List<String>> principleToGuidelinesMap  =  new HashMap<>();
-        principleToGuidelinesMap.put(PrincipleSetup.PrincipleConstants.Perceivable, Arrays.asList(
-                GuidelineSetup.GuidelineConstants.TextAlternatives,
-                GuidelineSetup.GuidelineConstants.TimeBasedMedia,
-                GuidelineSetup.GuidelineConstants.Adaptable,
-                GuidelineSetup.GuidelineConstants.Distinguishable
+        principleToGuidelinesMap.put(PrincipleDatabase.PrincipleConstants.Perceivable, Arrays.asList(
+                GuidelineDatabase.GuidelineConstants.TextAlternatives,
+                GuidelineDatabase.GuidelineConstants.TimeBasedMedia,
+                GuidelineDatabase.GuidelineConstants.Adaptable,
+                GuidelineDatabase.GuidelineConstants.Distinguishable
         ));
-        principleToGuidelinesMap.put(PrincipleSetup.PrincipleConstants.Operable, Arrays.asList(
-                GuidelineSetup.GuidelineConstants.KeyboardAccessible,
-                GuidelineSetup.GuidelineConstants.EnoughTime,
-                GuidelineSetup.GuidelineConstants.Seizures,
-                GuidelineSetup.GuidelineConstants.Navigable
+        principleToGuidelinesMap.put(PrincipleDatabase.PrincipleConstants.Operable, Arrays.asList(
+                GuidelineDatabase.GuidelineConstants.KeyboardAccessible,
+                GuidelineDatabase.GuidelineConstants.EnoughTime,
+                GuidelineDatabase.GuidelineConstants.Seizures,
+                GuidelineDatabase.GuidelineConstants.Navigable
         ));
-        principleToGuidelinesMap.put(PrincipleSetup.PrincipleConstants.Understandable, Arrays.asList(
-                GuidelineSetup.GuidelineConstants.Readable,
-                GuidelineSetup.GuidelineConstants.Predictable,
-                GuidelineSetup.GuidelineConstants.InputAssistance
+        principleToGuidelinesMap.put(PrincipleDatabase.PrincipleConstants.Understandable, Arrays.asList(
+                GuidelineDatabase.GuidelineConstants.Readable,
+                GuidelineDatabase.GuidelineConstants.Predictable,
+                GuidelineDatabase.GuidelineConstants.InputAssistance
         ));
-        principleToGuidelinesMap.put(PrincipleSetup.PrincipleConstants.Robust, Arrays.asList(
-                GuidelineSetup.GuidelineConstants.Compatible
+        principleToGuidelinesMap.put(PrincipleDatabase.PrincipleConstants.Robust, Arrays.asList(
+                GuidelineDatabase.GuidelineConstants.Compatible
         ));
         return principleToGuidelinesMap;
     }
@@ -86,90 +86,90 @@ public class SetupParameters {
     private Map<String, List<String>> buildGuideLineToCriteriasMap()
     {
         Map<String, List<String>> guideLineToCriteriasMap =  new HashMap<>();
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.TextAlternatives, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.NonTextContent
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.TextAlternatives, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.NonTextContent
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.TimeBasedMedia, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.AudioOnlyVideoOnly,
-                CriteriaSetup.CriteriaConstants.CaptionsPreRecorded,
-                CriteriaSetup.CriteriaConstants.AudioDescriptionMediaAlternative,
-                CriteriaSetup.CriteriaConstants.CaptionsLive,
-                CriteriaSetup.CriteriaConstants.AudioDescription,
-                CriteriaSetup.CriteriaConstants.SignLanguage,
-                CriteriaSetup.CriteriaConstants.ExtendedAudioDescription,
-                CriteriaSetup.CriteriaConstants.MediaAlternative,
-                CriteriaSetup.CriteriaConstants.AudioOnlyLive
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.TimeBasedMedia, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.AudioOnlyVideoOnly,
+                CriteriaDatabase.CriteriaConstants.CaptionsPreRecorded,
+                CriteriaDatabase.CriteriaConstants.AudioDescriptionMediaAlternative,
+                CriteriaDatabase.CriteriaConstants.CaptionsLive,
+                CriteriaDatabase.CriteriaConstants.AudioDescription,
+                CriteriaDatabase.CriteriaConstants.SignLanguage,
+                CriteriaDatabase.CriteriaConstants.ExtendedAudioDescription,
+                CriteriaDatabase.CriteriaConstants.MediaAlternative,
+                CriteriaDatabase.CriteriaConstants.AudioOnlyLive
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.Adaptable, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.InfoRelationship,
-                CriteriaSetup.CriteriaConstants.MeaningfulSequence,
-                CriteriaSetup.CriteriaConstants.SensoryCharacteristics
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Adaptable, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.InfoRelationship,
+                CriteriaDatabase.CriteriaConstants.MeaningfulSequence,
+                CriteriaDatabase.CriteriaConstants.SensoryCharacteristics
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.Distinguishable, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.UseOfColor,
-                CriteriaSetup.CriteriaConstants.AudioControl,
-                CriteriaSetup.CriteriaConstants.ContrastMinimum,
-                CriteriaSetup.CriteriaConstants.ResizeText,
-                CriteriaSetup.CriteriaConstants.ImagesOfText,
-                CriteriaSetup.CriteriaConstants.ContrastEnchanced,
-                CriteriaSetup.CriteriaConstants.LowOrNoBackgroundAudio,
-                CriteriaSetup.CriteriaConstants.VisualPresentation,
-                CriteriaSetup.CriteriaConstants.ImageOfTextNoException
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Distinguishable, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.UseOfColor,
+                CriteriaDatabase.CriteriaConstants.AudioControl,
+                CriteriaDatabase.CriteriaConstants.ContrastMinimum,
+                CriteriaDatabase.CriteriaConstants.ResizeText,
+                CriteriaDatabase.CriteriaConstants.ImagesOfText,
+                CriteriaDatabase.CriteriaConstants.ContrastEnchanced,
+                CriteriaDatabase.CriteriaConstants.LowOrNoBackgroundAudio,
+                CriteriaDatabase.CriteriaConstants.VisualPresentation,
+                CriteriaDatabase.CriteriaConstants.ImageOfTextNoException
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.KeyboardAccessible, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.Keyboard,
-                CriteriaSetup.CriteriaConstants.NoKeyboardTrap,
-                CriteriaSetup.CriteriaConstants.KeyboardNoException
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.KeyboardAccessible, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.Keyboard,
+                CriteriaDatabase.CriteriaConstants.NoKeyboardTrap,
+                CriteriaDatabase.CriteriaConstants.KeyboardNoException
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.EnoughTime, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.TimingAdjustable,
-                CriteriaSetup.CriteriaConstants.PauseStopHide,
-                CriteriaSetup.CriteriaConstants.NoTiming,
-                CriteriaSetup.CriteriaConstants.Interruptions,
-                CriteriaSetup.CriteriaConstants.ReAuthenticating
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.EnoughTime, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.TimingAdjustable,
+                CriteriaDatabase.CriteriaConstants.PauseStopHide,
+                CriteriaDatabase.CriteriaConstants.NoTiming,
+                CriteriaDatabase.CriteriaConstants.Interruptions,
+                CriteriaDatabase.CriteriaConstants.ReAuthenticating
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.Seizures, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.ThreeFlashesOrBelowThreshold ,
-                CriteriaSetup.CriteriaConstants.ThreeFlashes
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Seizures, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.ThreeFlashesOrBelowThreshold ,
+                CriteriaDatabase.CriteriaConstants.ThreeFlashes
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.Navigable, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.BypassBlocks,
-                CriteriaSetup.CriteriaConstants.PageTitled,
-                CriteriaSetup.CriteriaConstants.FocusOrder,
-                CriteriaSetup.CriteriaConstants.LinkPurposeInContext,
-                CriteriaSetup.CriteriaConstants.MultipleWays,
-                CriteriaSetup.CriteriaConstants.HeadingsAndLabels,
-                CriteriaSetup.CriteriaConstants.FocusVisible,
-                CriteriaSetup.CriteriaConstants.Location,
-                CriteriaSetup.CriteriaConstants.LinkPurposeLinkOnly,
-                CriteriaSetup.CriteriaConstants.SectionHeadings
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Navigable, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.BypassBlocks,
+                CriteriaDatabase.CriteriaConstants.PageTitled,
+                CriteriaDatabase.CriteriaConstants.FocusOrder,
+                CriteriaDatabase.CriteriaConstants.LinkPurposeInContext,
+                CriteriaDatabase.CriteriaConstants.MultipleWays,
+                CriteriaDatabase.CriteriaConstants.HeadingsAndLabels,
+                CriteriaDatabase.CriteriaConstants.FocusVisible,
+                CriteriaDatabase.CriteriaConstants.Location,
+                CriteriaDatabase.CriteriaConstants.LinkPurposeLinkOnly,
+                CriteriaDatabase.CriteriaConstants.SectionHeadings
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.Readable, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.LanguageOfPage,
-                CriteriaSetup.CriteriaConstants.LanguageOfParts,
-                CriteriaSetup.CriteriaConstants.UnusualWords,
-                CriteriaSetup.CriteriaConstants.Abbreviations,
-                CriteriaSetup.CriteriaConstants.ReadingLevel,
-                CriteriaSetup.CriteriaConstants.Pronunciation
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Readable, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.LanguageOfPage,
+                CriteriaDatabase.CriteriaConstants.LanguageOfParts,
+                CriteriaDatabase.CriteriaConstants.UnusualWords,
+                CriteriaDatabase.CriteriaConstants.Abbreviations,
+                CriteriaDatabase.CriteriaConstants.ReadingLevel,
+                CriteriaDatabase.CriteriaConstants.Pronunciation
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.Predictable, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.OnFocus,
-                CriteriaSetup.CriteriaConstants.OnInput,
-                CriteriaSetup.CriteriaConstants.ConsistentNavigation,
-                CriteriaSetup.CriteriaConstants.ConsistentIdentification,
-                CriteriaSetup.CriteriaConstants.ChangeOnRequest
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Predictable, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.OnFocus,
+                CriteriaDatabase.CriteriaConstants.OnInput,
+                CriteriaDatabase.CriteriaConstants.ConsistentNavigation,
+                CriteriaDatabase.CriteriaConstants.ConsistentIdentification,
+                CriteriaDatabase.CriteriaConstants.ChangeOnRequest
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.InputAssistance, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.ErrorIdentification,
-                CriteriaSetup.CriteriaConstants.LabelsOrInstructions,
-                CriteriaSetup.CriteriaConstants.ErrorSuggestion,
-                CriteriaSetup.CriteriaConstants.ErrorPrevention ,
-                CriteriaSetup.CriteriaConstants.Help ,
-                CriteriaSetup.CriteriaConstants.ErrorPreventionAll
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.InputAssistance, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.ErrorIdentification,
+                CriteriaDatabase.CriteriaConstants.LabelsOrInstructions,
+                CriteriaDatabase.CriteriaConstants.ErrorSuggestion,
+                CriteriaDatabase.CriteriaConstants.ErrorPrevention ,
+                CriteriaDatabase.CriteriaConstants.Help ,
+                CriteriaDatabase.CriteriaConstants.ErrorPreventionAll
         ));
-        guideLineToCriteriasMap.put(GuidelineSetup.GuidelineConstants.Compatible, Arrays.asList(
-                CriteriaSetup.CriteriaConstants.Parsing,
-                CriteriaSetup.CriteriaConstants.NameRoleValue
+        guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Compatible, Arrays.asList(
+                CriteriaDatabase.CriteriaConstants.Parsing,
+                CriteriaDatabase.CriteriaConstants.NameRoleValue
         ));
         return guideLineToCriteriasMap;
     }

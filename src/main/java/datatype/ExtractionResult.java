@@ -3,6 +3,9 @@ package datatype;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Object class to save results from the PDF extraction process.
+ */
 public class ExtractionResult {
 
     private List<Text> text;

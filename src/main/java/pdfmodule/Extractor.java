@@ -49,23 +49,34 @@ import org.apache.pdfbox.contentstream.operator.state.Save;
 import org.apache.pdfbox.contentstream.operator.state.SetGraphicsStateParameters;
 import org.apache.pdfbox.contentstream.operator.state.SetMatrix;
 
+/* All work related to PDF extraction must go here.
+ * Observations:
+ * 1) The only way to process images is by overloading method processOperator
+ * 2) The only way to process text is by overloading method writeString.
+ * 3) Given the two above, using static fields was needed for
+ * saving information during extraction.
+ */
 public class Extractor extends PDFTextStripper
 {
 
+    /* CharConstant is used to detectd ordered lists, unrodered lists
+     * and paragraphs for some PDF(s). (Work In Progress)
+     */
     static class CharConstant
     {
         static String Period = ".";
         static String QuestionMark = "?";
         static String Bullet = "•";
         static String OrderedNumber = "1.";
-
     }
 
     private static TextPosition oldChar = null;
     private static TextPosition newChar = null;
     private static TextPosition firstChar = null;
+
     private AffineTransform flipAT;
     private AffineTransform rotateAT;
+
     private static Text textBLock;
     private static String path = null;
     private static ExtractionResult extractionResult;
@@ -80,7 +91,7 @@ public class Extractor extends PDFTextStripper
         extractionResult = new ExtractionResult();
         tempClassification = new ArrayList<String>();
 
-        // Font color OPERATORS
+        // Font color OPERATORS, needed for complete font information extraction (such as color).
         addOperator(new SetStrokingColorSpace());
         addOperator(new SetNonStrokingColorSpace());
         addOperator(new SetStrokingDeviceCMYKColor());
@@ -94,7 +105,7 @@ public class Extractor extends PDFTextStripper
         addOperator(new SetNonStrokingColor());
         addOperator(new SetNonStrokingColorN());
 
-        // Image extraction operators
+        // Image extraction operators, needed for image extraction
         addOperator(new Concatenate());
         addOperator(new DrawObject());
         addOperator(new SetGraphicsStateParameters());
@@ -110,7 +121,7 @@ public class Extractor extends PDFTextStripper
             Extractor stripper = new Extractor(document, path);
             stripper.setSortByPosition(true);
 
-            // Text Extraction (Text (Content and structure, Font)
+            // Text Extraction (Text (Content and structure, Font) page by page.
             for(int p = 0; p < document.getNumberOfPages(); ++p)
             {
                 firstChar = null;
@@ -118,9 +129,9 @@ public class Extractor extends PDFTextStripper
                 newChar = null;
                 textBLock = null;
 
-                System.out.println("---------- BEGGINING OF PAGE " + (p + 1) + "  ----------");
+                // DEBUG: System.out.println("---------- BEGGINING OF PAGE " + (p + 1) + "  ----------");
                 stripper.stripPage(p);
-                System.out.println("---------- END OF PAGE " + (p + 1) + "  ----------");
+                // DEBUG: System.out.println("---------- END OF PAGE " + (p + 1) + "  ----------");
             }
 
             refreshTextClassification(extractionResult.getFont());
@@ -128,9 +139,6 @@ public class Extractor extends PDFTextStripper
 
             // Color
             //extractFontColor();
-
-
-
             return extractionResult;
         }
     }
@@ -139,9 +147,9 @@ public class Extractor extends PDFTextStripper
     {
         PDPage pdPage = document.getPage(page);
 
+        // Will be used for caption extraction (Work in Progress)
         pageWidth = pdPage.getMediaBox().getUpperRightX();
         pageHeight = pdPage.getMediaBox().getUpperRightY();
-
 
         for(PDAnnotation annotation : pdPage.getAnnotations())
         {
@@ -209,8 +217,12 @@ public class Extractor extends PDFTextStripper
                 PDImageXObject image = (PDImageXObject)xobject;
                 int imageWidth = image.getWidth();
                 int imageHeight = image.getHeight();
+
+                /*
                 System.out.println("*******************************************************************");
                 System.out.println("Found image [" + objectName.getName() + "]");
+                */
+
 
                 Matrix ctmNew = getGraphicsState().getCurrentTransformationMatrix();
                 float imageXScale = ctmNew.getScalingFactorX();
@@ -226,20 +238,20 @@ public class Extractor extends PDFTextStripper
                         ));
 
                 // position in user space units. 1 unit = 1/72 inch at 72 dpi
-                System.out.println("position in PDF = " + ctmNew.getTranslateX() + ", " + ctmNew.getTranslateY() + " in user space units");
+                //System.out.println("position in PDF = " + ctmNew.getTranslateX() + ", " + ctmNew.getTranslateY() + " in user space units");
                 // raw size in pixels
-                System.out.println("raw image size  = " + imageWidth + ", " + imageHeight + " in pixels");
+                //System.out.println("raw image size  = " + imageWidth + ", " + imageHeight + " in pixels");
                 // displayed size in user space units
-                System.out.println("displayed size  = " + imageXScale + ", " + imageYScale + " in user space units");
+                //System.out.println("displayed size  = " + imageXScale + ", " + imageYScale + " in user space units");
                 // displayed size in inches at 72 dpi rendering
                 imageXScale /= 72;
                 imageYScale /= 72;
-                System.out.println("displayed size  = " + imageXScale + ", " + imageYScale + " in inches at 72 dpi rendering");
+                //System.out.println("displayed size  = " + imageXScale + ", " + imageYScale + " in inches at 72 dpi rendering");
                 // displayed size in millimeters at 72 dpi rendering
                 imageXScale *= 25.4;
                 imageYScale *= 25.4;
-                System.out.println("displayed size  = " + imageXScale + ", " + imageYScale + " in millimeters at 72 dpi rendering");
-                System.out.println();
+                //System.out.println("displayed size  = " + imageXScale + ", " + imageYScale + " in millimeters at 72 dpi rendering");
+                //System.out.println();
             }
             else if(xobject instanceof PDFormXObject)
             {
@@ -298,6 +310,7 @@ public class Extractor extends PDFTextStripper
         for (TextPosition text : textPositions)
         {
 
+           // DEBUG
            //  System.out.println("String[" + text.getXDirAdj() + ","
            //          + text.getYDirAdj() + " fs=" + text.getFontSize() + " xscale="
            //          + text.getXScale() + " height=" + text.getHeightDir() + " space="
@@ -308,11 +321,8 @@ public class Extractor extends PDFTextStripper
             newChar = text;
         }
 
-
-        // Checking for a line break
-        // System.out.println("(" + oldChar.getUnicode() + "|" + newChar.getUnicode() + ")");
-        // System.out.println("STRING: " + string);
-        //System.out.print("BEFORE CFUCNTION CHECK(" + oldChar.getUnicode() + "," + newChar.getUnicode() + ")");
+        // DEBUG: System.out.println("(" + oldChar.getUnicode() + "|" + newChar.getUnicode() + ")");
+        // DEBUG: System.out.println("STRING: " + string);
         if(isNewTextBlock(oldChar,newChar))
         {
             // Make final changes and add our text block
@@ -345,11 +355,13 @@ public class Extractor extends PDFTextStripper
 
     private boolean isNewTextBlock(TextPosition oldLastChar, TextPosition newLastChar) throws IOException
     {
-        System.out.println("(" + oldLastChar.getUnicode() + "," + newLastChar.getUnicode() + ")");
+        // DEBUG
+        //System.out.println("(" + oldLastChar.getUnicode() + "," + newLastChar.getUnicode() + ")");
 
         Shape oldShape = calculateShape(oldLastChar);
         Shape newShape = calculateShape(newLastChar);
 
+        // DEBUG
         //System.out.println(" -----> (" + oldShape.getBounds2D().getY()+ "|"
         // + newShape.getBounds2D().getY()  + "|"
         //        + newShape.getBounds2D().getHeight() + ")");
@@ -360,10 +372,10 @@ public class Extractor extends PDFTextStripper
                 newShape.getBounds2D().getHeight())) return true;
 
 
+        // If the shapes don't interesection, make a lest check considering
+        // both chars heights and text semantics.
         if(oldLastChar.getYDirAdj() != newLastChar.getYDirAdj() &&
                 isSpecialCharChange(oldLastChar,newLastChar)) return true;
-
-
 
         return false;
     }
@@ -400,7 +412,8 @@ public class Extractor extends PDFTextStripper
         String oc = oldChar.getUnicode();
         String  nc = newChar.getUnicode();
 
-        System.out.println("oc = " + oc + " nc = " + nc);
+        // DEBUG
+        //System.out.println("oc = " + oc + " nc = " + nc);
 
         // if(oc.equals(CharConstant.Period) || oc.equals(CharConstant.QuestionMark)) return true;
         if(nc.equals(CharConstant.Bullet) || isNumber(nc)) return true;
@@ -450,7 +463,7 @@ public class Extractor extends PDFTextStripper
         {
             for(Text text : extractionResult.getText())
             {
-                // TO DO: Take style to consdieration?
+                // TO DO: Take style to consideration?
                 if(fontList.get(f).getSize() == text.getFont().getSize())
                 {
                     text.setClassification(tempClassification.get(f));

@@ -9,9 +9,6 @@ public class Text {
     private float yStart;
     private float xEnd;
     private float yEnd;
-    private float blockWidth;
-    private float blockHeight;
-
 
     public Text (String content, Font font) {
         this.content = content;

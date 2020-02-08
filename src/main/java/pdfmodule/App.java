@@ -4,36 +4,33 @@
 package pdfmodule;
 
 import datatype.ExtractionResult;
-import datatype.Font;
-import datatype.Text;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.text.PDFTextStripper;
-import test.DrawPrintTextLocations;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
 
     public static void main(String[] args) throws IOException
     {
 
-        String path = "/home/dmb/Documents/samples/";
-        String fileName = "samplePDF3";
-        String ext = ".pdf";
+        if(args.length < 1) {
+            System.out.println("Não foi o passado o caminho para um arquivo. Abortando...");
+            return;
+        }
 
-        List<Text> texts = new ArrayList<Text>();
-        List<Font> fonts = new ArrayList<Font>();
-
-
-        try (PDDocument document = PDDocument.load(new File(path+fileName+ext)))
+        String path = args[0];
+        if(!FilenameUtils.getExtension(path).equals("pdf"))
         {
-            Extractor extractor = new Extractor(document,path+fileName+ext);
+            System.out.println("O arquivo passado não é um pdf. Abortando...");
+            return;
+        }
+
+        // Try to load a PDF document
+        try (PDDocument document = PDDocument.load(new File(path)))
+        {
+            Extractor extractor = new Extractor(document,path);
             ExtractionResult extractionResult = extractor.Extract();
             DEBUG(extractionResult);
         }
@@ -41,65 +38,8 @@ public class App {
         // Analyzer analyzer = new Analyzer();
         // analyzer.analyzeDocument();
 
-        // DrawPrintTextLocations.main(path + fileName +ext);
-        System.out.println("PROGRAM ENDED SUCCESSFULLY");
-    }
-    /*
-     * Imprimindo o texto inteiro
-     */
-    public static void test1(String path) throws IOException
-    {
-        try (PDDocument document = PDDocument.load(new File(path)))
-        {
-            PDFTextStripper stripper = new PDFTextStripper();
-            stripper.setSortByPosition(true);
-            String text = stripper.getText(document);
-            System.out.println(text);
-
-            //for (int p = 1; p <= document.getNumberOfPages(); ++p);
-            //{
-            //    String text = stripper.getText(document);
-            //}
-        }
-    }
-
-    /*
-     * Imprimindo conteúdo por página.
-     */
-    public static void test2(String path) throws IOException
-    {
-        try (PDDocument document = PDDocument.load(new File(path)))
-        {
-            PDFTextStripper stripper = new PDFTextStripper();
-            stripper.setSortByPosition(true);
-
-            for(int p = 1; p <= document.getNumberOfPages(); ++p)
-            {
-                stripper.setStartPage(p);
-                stripper.setEndPage(p);
-
-                String text = stripper.getText(document);
-
-                String pageStr = String.format("page %d", p);
-                System.out.println(pageStr);
-                for (int i = 0; i < pageStr.length(); ++i) {
-                    System.out.print("-");
-                }
-                System.out.println();
-                System.out.println(text);
-                System.out.println();
-            }
-        }
-    }
-
-    public static void test4(String path) throws IOException
-    {
-        PrintImageLocations.test(path);
-    }
-
-    public static void test5(String path) throws IOException
-    {
-        Metadata.test(path);
+        // DEBUG
+        System.out.println("Program ended successfully.");
     }
 
     public static void DEBUG(ExtractionResult extractionResult)

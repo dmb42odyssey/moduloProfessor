@@ -1,21 +1,20 @@
 package pdfmodule;
 
-import database.PrincipleSetup;
 import database.SetupParameters;
-import datatype.guidance.AbstractCriteria;
-import datatype.guidance.AbstractGuideline;
-import datatype.guidance.AbstractPrinciple;
-import datatype.guidance.ConformanceLevel;
-import database.PrincipleSetup.PrincipleConstants;
-import database.GuidelineSetup.GuidelineConstants;
-import database.CriteriaSetup.CriteriaConstants;
+import datatype.accessibility.AbstractCriteria;
+import datatype.accessibility.AbstractGuideline;
+import datatype.accessibility.AbstractPrinciple;
+import datatype.accessibility.ConformanceLevel;
+import database.CriteriaDatabase.CriteriaConstants;
 
 
 
 import java.util.List;
-import java.util.Map;
 
-// Verificaçao
+
+/* All tasks related to checking if the conformity level is assured
+ * goes here.
+ */
 public class Analyzer {
 
     private List<AbstractPrinciple> principleList;
@@ -29,8 +28,6 @@ public class Analyzer {
     {
         SetupParameters setupParameters = new SetupParameters();
         principleList = setupParameters.buildDataSctructure();
-
-
         // debugPrint();
     }
 
@@ -62,6 +59,7 @@ public class Analyzer {
     private void selectCriteriaCheck(AbstractCriteria criteria)
     {
         // 61
+
         // Text and Image
         String criteriaName = criteria.getName();
         if(criteriaName == CriteriaConstants.NonTextContentName)
@@ -75,6 +73,7 @@ public class Analyzer {
         //}
     }
 
+    // DEBUG
     private void debugPrint()
     {
         System.out.println("Creation ended");
