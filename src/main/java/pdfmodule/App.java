@@ -24,7 +24,7 @@ public class App {
     {
 
         String path = "/home/dmb/Documents/samples/";
-        String fileName = "samplePDF1";
+        String fileName = "samplePDF3";
         String ext = ".pdf";
 
         List<Text> texts = new ArrayList<Text>();
@@ -35,23 +35,7 @@ public class App {
         {
             Extractor extractor = new Extractor(document,path+fileName+ext);
             ExtractionResult extractionResult = extractor.Extract();
-            for(int i = 0; i < extractionResult.getText().size(); i++)
-            {
-                System.out.println("------ TEXT FRAGMENT: " + (i + 1) + " ------");
-                System.out.print("[" + extractionResult.getText().get(i).getClassification() + "]");
-                System.out.println(extractionResult.getText().get(i).getContent());
-                System.out.println("Xstart: " +extractionResult.getText().get(i).getxStart());
-                System.out.println("XEnd: " +extractionResult.getText().get(i).getxEnd());
-                System.out.println("Ystart: " +extractionResult.getText().get(i).getyStart());
-                System.out.println("XEnd: " +extractionResult.getText().get(i).getyEnd());
-            }
-
-            for(int k = 0; k < extractionResult.getImage().size(); k++)
-            {
-                System.out.println("------ IMAGE: " + (k + 1) + " ------");
-                System.out.println("[" + extractionResult.getImage().get(k).getName()+ "]");
-                System.out.println("[" + extractionResult.getImage().get(k).xobject + "]");
-            }
+            DEBUG(extractionResult);
         }
 
         // Analyzer analyzer = new Analyzer();
@@ -116,6 +100,27 @@ public class App {
     public static void test5(String path) throws IOException
     {
         Metadata.test(path);
+    }
+
+    public static void DEBUG(ExtractionResult extractionResult)
+    {
+        for(int i = 0; i < extractionResult.getText().size(); i++)
+        {
+            System.out.println("------ TEXT FRAGMENT: " + (i + 1) + " ------");
+            System.out.print("[" + extractionResult.getText().get(i).getClassification() + "]");
+            System.out.println(extractionResult.getText().get(i).getContent());
+            System.out.println("Xstart: " +extractionResult.getText().get(i).getxStart());
+            System.out.println("XEnd: " +extractionResult.getText().get(i).getxEnd());
+            System.out.println("Ystart: " +extractionResult.getText().get(i).getyStart());
+            System.out.println("YEnd: " +extractionResult.getText().get(i).getyEnd());
+        }
+
+        for(int k = 0; k < extractionResult.getImage().size(); k++)
+        {
+            System.out.println("------ IMAGE: " + (k + 1) + " ------");
+            System.out.println("[" + extractionResult.getImage().get(k).getName()+ "]");
+            System.out.println("[" + extractionResult.getImage().get(k).xobject + "]");
+        }
     }
 
 }

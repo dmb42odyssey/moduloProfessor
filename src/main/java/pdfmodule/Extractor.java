@@ -52,6 +52,15 @@ import org.apache.pdfbox.contentstream.operator.state.SetMatrix;
 public class Extractor extends PDFTextStripper
 {
 
+    static class CharConstant
+    {
+        static String Period = ".";
+        static String QuestionMark = "?";
+        static String Bullet = "•";
+        static String OrderedNumber = "1.";
+
+    }
+
     private static TextPosition oldChar = null;
     private static TextPosition newChar = null;
     private static TextPosition firstChar = null;
@@ -61,6 +70,8 @@ public class Extractor extends PDFTextStripper
     private static String path = null;
     private static ExtractionResult extractionResult;
     private static List<String> tempClassification;
+    private static float pageWidth;
+    private static float pageHeight;
 
     public Extractor(PDDocument document, String path) throws IOException
     {
@@ -128,14 +139,19 @@ public class Extractor extends PDFTextStripper
     {
         PDPage pdPage = document.getPage(page);
 
-        // for(PDAnnotation annotation : pdPage.getAnnotations())
-        // {
-        //     System.out.println("Annotation: " + annotation.getContents());
-        // }
+        pageWidth = pdPage.getMediaBox().getUpperRightX();
+        pageHeight = pdPage.getMediaBox().getUpperRightY();
 
 
-        System.out.println("xi: " + pdPage.getMediaBox().getLowerLeftX() +  "xf: " + pdPage.getMediaBox().getUpperRightX());
-        System.out.println("yi: " + pdPage.getMediaBox().getLowerLeftY() +  "yf: " + pdPage.getMediaBox().getUpperRightY());
+        for(PDAnnotation annotation : pdPage.getAnnotations())
+        {
+             System.out.println(annotation.getAnnotationName());
+             System.out.println("Annotation: " + annotation.getContents());
+        }
+
+
+        System.out.println("xf: " + pdPage.getMediaBox().getUpperRightX());
+        System.out.println("yf: " + pdPage.getMediaBox().getUpperRightY());
 
 
         // flip y-axis
@@ -282,12 +298,13 @@ public class Extractor extends PDFTextStripper
         for (TextPosition text : textPositions)
         {
 
-            // System.out.println("String[" + text.getXDirAdj() + ","
-            //         + text.getYDirAdj() + " fs=" + text.getFontSize() + " xscale="
-            //         + text.getXScale() + " height=" + text.getHeightDir() + " space="
-            //         + text.getWidthOfSpace() + " width="
-            //         + text.getWidthDirAdj() + "]" + text.getUnicode());
+           //  System.out.println("String[" + text.getXDirAdj() + ","
+           //          + text.getYDirAdj() + " fs=" + text.getFontSize() + " xscale="
+           //          + text.getXScale() + " height=" + text.getHeightDir() + " space="
+           //          + text.getWidthOfSpace() + " width="
+           //          + text.getWidthDirAdj() + "]" + text.getUnicode());
 
+            if(text.getUnicode().equals(" ")) continue;
             newChar = text;
         }
 
@@ -328,7 +345,7 @@ public class Extractor extends PDFTextStripper
 
     private boolean isNewTextBlock(TextPosition oldLastChar, TextPosition newLastChar) throws IOException
     {
-        //System.out.print("(" + oldLastChar.getUnicode() + "," + newLastChar.getUnicode() + ")");
+        System.out.println("(" + oldLastChar.getUnicode() + "," + newLastChar.getUnicode() + ")");
 
         Shape oldShape = calculateShape(oldLastChar);
         Shape newShape = calculateShape(newLastChar);
@@ -339,8 +356,16 @@ public class Extractor extends PDFTextStripper
         //System.out.println((oldShape.getBounds2D().getY()) + "<=" +
         //        (newShape.getBounds2D().getY() - newShape.getBounds2D().getHeight()));
 
-        return oldShape.getBounds2D().getY() * 1.01 <= (newShape.getBounds2D().getY() -
-                newShape.getBounds2D().getHeight());
+        if(oldShape.getBounds2D().getY()  <= (newShape.getBounds2D().getY() -
+                newShape.getBounds2D().getHeight())) return true;
+
+
+        if(oldLastChar.getYDirAdj() != newLastChar.getYDirAdj() &&
+                isSpecialCharChange(oldLastChar,newLastChar)) return true;
+
+
+
+        return false;
     }
 
     private Shape calculateShape(TextPosition text) throws IOException
@@ -368,6 +393,19 @@ public class Extractor extends PDFTextStripper
         s = rotateAT.createTransformedShape(s);
 
         return s;
+    }
+
+    private boolean isSpecialCharChange(TextPosition oldChar, TextPosition newChar)
+    {
+        String oc = oldChar.getUnicode();
+        String  nc = newChar.getUnicode();
+
+        System.out.println("oc = " + oc + " nc = " + nc);
+
+        // if(oc.equals(CharConstant.Period) || oc.equals(CharConstant.QuestionMark)) return true;
+        if(nc.equals(CharConstant.Bullet) || isNumber(nc)) return true;
+
+        return false;
     }
 
     private void addClassification()
