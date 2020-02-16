@@ -17,11 +17,24 @@ public enum ConformanceLevel {
         this.priority = priority;
     }
 
-    /* Work in Progess
+    public ConformanceLevel lowerConformance(ConformanceLevel conformanceLevel)
+    {
+        switch (conformanceLevel)
+        {
+            case AAA:
+                return AA;
+            case AA:
+                return A;
+            default:
+                return null;
+        }
+    }
 
+    /*
     public boolean comparateConformance(ConformanceLevel a, ConformanceLevel b)
     {
         return false;
     }
-    */
+
+     */
 }

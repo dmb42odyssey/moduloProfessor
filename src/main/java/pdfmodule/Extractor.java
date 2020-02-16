@@ -8,10 +8,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import datatype.ExtractionResult;
 import datatype.Font;
@@ -26,6 +26,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.ResourceCache;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.documentinterchange.logicalstructure.PDStructureTreeRoot;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType3Font;
 import org.apache.pdfbox.pdmodel.graphics.color.PDColor;
@@ -49,6 +50,8 @@ import org.apache.pdfbox.contentstream.operator.state.Save;
 import org.apache.pdfbox.contentstream.operator.state.SetGraphicsStateParameters;
 import org.apache.pdfbox.contentstream.operator.state.SetMatrix;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
+
 /* All work related to PDF extraction must go here.
  * Observations:
  * 1) The only way to process images is by overloading method processOperator
@@ -62,12 +65,21 @@ public class Extractor extends PDFTextStripper
     /* CharConstant is used to detectd ordered lists, unrodered lists
      * and paragraphs for some PDF(s). (Work In Progress)
      */
-    static class CharConstant
+    static class PatternConstant
     {
-        static String Period = ".";
-        static String QuestionMark = "?";
-        static String Bullet = "•";
-        static String OrderedNumber = "1.";
+        String period = ".";
+        String questionMark = "?";
+        static String bullet = "[•○●]";
+        //static String bullet = "[•]";
+        static String orderedNumber = "[].";
+
+        static Map<String,String> specialCharPattern = new HashMap<String, String>();
+
+        static void initDictionary()
+        {
+            specialCharPattern.put("Bullet",bullet);
+            // specialCharPattern.put("OrderedNumber",orderedNumber)
+        }
     }
 
     private static TextPosition oldChar = null;
@@ -90,6 +102,7 @@ public class Extractor extends PDFTextStripper
         this.path = path;
         extractionResult = new ExtractionResult();
         tempClassification = new ArrayList<String>();
+        PatternConstant.initDictionary();
 
         // Font color OPERATORS, needed for complete font information extraction (such as color).
         addOperator(new SetStrokingColorSpace());
@@ -218,11 +231,11 @@ public class Extractor extends PDFTextStripper
                 int imageWidth = image.getWidth();
                 int imageHeight = image.getHeight();
 
+
                 /*
                 System.out.println("*******************************************************************");
                 System.out.println("Found image [" + objectName.getName() + "]");
                 */
-
 
                 Matrix ctmNew = getGraphicsState().getCurrentTransformationMatrix();
                 float imageXScale = ctmNew.getScalingFactorX();
@@ -293,6 +306,7 @@ public class Extractor extends PDFTextStripper
     protected void writeString(String string, List<TextPosition> textPositions) throws IOException
     {
 
+
         if(oldChar == null)
         {
             oldChar = textPositions.get(0);
@@ -311,20 +325,21 @@ public class Extractor extends PDFTextStripper
         {
 
            // DEBUG
-           //  System.out.println("String[" + text.getXDirAdj() + ","
-           //          + text.getYDirAdj() + " fs=" + text.getFontSize() + " xscale="
-           //          + text.getXScale() + " height=" + text.getHeightDir() + " space="
-           //          + text.getWidthOfSpace() + " width="
-           //          + text.getWidthDirAdj() + "]" + text.getUnicode());
+          //   System.out.println("String[" + text.getXDirAdj() + ","
+          //           + text.getYDirAdj() + " fs=" + text.getFontSize() + " xscale="
+          //           + text.getXScale() + " height=" + text.getHeightDir() + " space="
+          //           + text.getWidthOfSpace() + " width="
+          //           + text.getWidthDirAdj() + "]" + text.getUnicode());
 
             if(text.getUnicode().equals(" ")) continue;
             newChar = text;
         }
 
-        // DEBUG: System.out.println("(" + oldChar.getUnicode() + "|" + newChar.getUnicode() + ")");
+         System.out.println("(" + oldChar.getUnicode() + "|" + newChar.getUnicode() + ")");
         // DEBUG: System.out.println("STRING: " + string);
         if(isNewTextBlock(oldChar,newChar))
         {
+            System.out.println("Texto: " + textBLock.getContent());
             // Make final changes and add our text block
             textBLock.setxEnd(oldChar.getXDirAdj());
             textBLock.setyEnd(oldChar.getYDirAdj());
@@ -338,13 +353,16 @@ public class Extractor extends PDFTextStripper
                 Collections.sort(extractionResult.getFont(), Comparator.comparing(Font::getSize));
                 addClassification();
                 f = getFont(newChar,extractionResult.getFont());
+                System.out.println("f: " + f);
             }
             // Switch to a new Text BLock
-            extractionResult.getText().get(f).setClassification(tempClassification.get(f));
+            //extractionResult.getText().setClassification(tempClassification.get(f));
             textBLock = new Text(string + " ", extractionResult.getFont().get(f));
+            textBLock.setClassification(tempClassification.get(f));
             firstChar = newChar;
             textBLock.setxStart(firstChar.getXDirAdj());
             textBLock.setYStart(firstChar.getYDirAdj());
+
         }
         else
         {
@@ -365,8 +383,8 @@ public class Extractor extends PDFTextStripper
         //System.out.println(" -----> (" + oldShape.getBounds2D().getY()+ "|"
         // + newShape.getBounds2D().getY()  + "|"
         //        + newShape.getBounds2D().getHeight() + ")");
-        //System.out.println((oldShape.getBounds2D().getY()) + "<=" +
-        //        (newShape.getBounds2D().getY() - newShape.getBounds2D().getHeight()));
+        System.out.println((oldShape.getBounds2D().getY()) + "<=" +
+               (newShape.getBounds2D().getY() - newShape.getBounds2D().getHeight()));
 
         if(oldShape.getBounds2D().getY()  <= (newShape.getBounds2D().getY() -
                 newShape.getBounds2D().getHeight())) return true;
@@ -409,14 +427,29 @@ public class Extractor extends PDFTextStripper
 
     private boolean isSpecialCharChange(TextPosition oldChar, TextPosition newChar)
     {
+
         String oc = oldChar.getUnicode();
         String  nc = newChar.getUnicode();
+
+        for(Map.Entry<String, String>  entry : PatternConstant.specialCharPattern.entrySet())
+        {
+            String key = entry.getKey();
+
+            Pattern p = Pattern.compile(entry.getValue());
+            Matcher m = p.matcher(newChar.getUnicode());
+
+            if(m.find())
+            {
+                return true;
+            }
+        }
+
+
 
         // DEBUG
         //System.out.println("oc = " + oc + " nc = " + nc);
 
         // if(oc.equals(CharConstant.Period) || oc.equals(CharConstant.QuestionMark)) return true;
-        if(nc.equals(CharConstant.Bullet) || isNumber(nc)) return true;
 
         return false;
     }

@@ -32,11 +32,10 @@ public class App {
         {
             Extractor extractor = new Extractor(document,path);
             ExtractionResult extractionResult = extractor.Extract();
+            Analyzer analyzer = new Analyzer(extractionResult, document);
+            analyzer.analyzeDocument();
             DEBUG(extractionResult);
         }
-
-        // Analyzer analyzer = new Analyzer();
-        // analyzer.analyzeDocument();
 
         // DEBUG
         System.out.println("Program ended successfully.");

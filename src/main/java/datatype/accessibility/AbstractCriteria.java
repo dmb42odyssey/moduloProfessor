@@ -9,7 +9,7 @@ import java.util.List;
  * verification method (checkIsSufficient), due to difference
  * in needed parameters (text, image, etc).
  */
-public abstract class AbstractCriteria {
+public abstract class AbstractCriteria implements CriteriaBasic {
 
     protected String id;
     protected String name;
@@ -17,8 +17,10 @@ public abstract class AbstractCriteria {
     protected List<String> situation;
     protected ConformanceLevel conformanceLevel;
     protected ConformanceLevel currentConformanceLevel;
+    // protected checkMethod
     protected boolean isApplicable;
     protected boolean isSufficient;
+
 
     public AbstractCriteria(String id, String name, String description)
     {
@@ -28,12 +30,16 @@ public abstract class AbstractCriteria {
         situation = new ArrayList<>();
         situation.add("A");
         currentConformanceLevel = null;
-        setIsApplicable(true); // Default
+
+
+        // IF(APPPLICABLE) THEN USE OWN FUCNTION
+        // ELSE
+        setIsApplicable(false); // Default
     }
 
-    public boolean checkIsSufficient()
+    public void testSufficience()
     {
-        return true;
+        setCurrentConformanceLevel(conformanceLevel);
     }
 
     public String getId() { return id;}
