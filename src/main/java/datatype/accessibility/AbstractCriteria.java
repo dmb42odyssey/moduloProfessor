@@ -1,5 +1,7 @@
 package datatype.accessibility;
 
+import database.CriteriaDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +19,9 @@ public abstract class AbstractCriteria implements CriteriaBasic {
     protected List<String> situation;
     protected ConformanceLevel conformanceLevel;
     protected ConformanceLevel currentConformanceLevel;
-    // protected checkMethod
     protected boolean isApplicable;
     protected boolean isSufficient;
-
+    protected String solutionText;
 
     public AbstractCriteria(String id, String name, String description)
     {
@@ -30,11 +31,7 @@ public abstract class AbstractCriteria implements CriteriaBasic {
         situation = new ArrayList<>();
         situation.add("A");
         currentConformanceLevel = null;
-
-
-        // IF(APPPLICABLE) THEN USE OWN FUCNTION
-        // ELSE
-        setIsApplicable(false); // Default
+        setIsApplicable(CriteriaDatabase.isEnabled(this));
     }
 
     public void testSufficience()
@@ -54,5 +51,5 @@ public abstract class AbstractCriteria implements CriteriaBasic {
     public boolean getIsApplicable() { return isApplicable; }
     public void setIsSufficient(boolean isSufficient) { this.isSufficient = isSufficient; }
     public boolean getIsSufficient() { return isSufficient; }
-    public List<String> getSituation() { return situation; }
+    public String getSolutionText() { return solutionText; }
 }

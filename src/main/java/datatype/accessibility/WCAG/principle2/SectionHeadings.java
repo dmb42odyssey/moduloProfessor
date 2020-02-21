@@ -8,9 +8,9 @@ public class SectionHeadings extends AbstractCriteria
 {
     public SectionHeadings()
     {
-        super(CriteriaDatabase.CriteriaConstants.SectionHeadings,
-                CriteriaDatabase.CriteriaConstants.SectionHeadingsName,
-                CriteriaDatabase.CriteriaConstants.SectionHeadingsDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.SectionHeadings,
+                CriteriaDatabase.CriteriaConstants.Name.SectionHeadings,
+                CriteriaDatabase.CriteriaConstants.Description.SectionHeadings);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

@@ -9,9 +9,9 @@ public class SignLanguage extends AbstractCriteria {
 
     public SignLanguage()
     {
-        super(CriteriaDatabase.CriteriaConstants.SignLanguage,
-                CriteriaDatabase.CriteriaConstants.SignLanguageName,
-                CriteriaDatabase.CriteriaConstants.SignLanguageDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.SignLanguage,
+                CriteriaDatabase.CriteriaConstants.Name.SignLanguage,
+                CriteriaDatabase.CriteriaConstants.Description.SignLanguage);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
     /* VIDEO ONLY

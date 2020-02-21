@@ -8,9 +8,9 @@ public class Parsing extends AbstractCriteria
 {
     public Parsing()
     {
-        super(CriteriaDatabase.CriteriaConstants.Parsing,
-                CriteriaDatabase.CriteriaConstants.ParsingName,
-                CriteriaDatabase.CriteriaConstants.ParsingDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.Parsing,
+                CriteriaDatabase.CriteriaConstants.Name.Parsing,
+                CriteriaDatabase.CriteriaConstants.Description.Parsing);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

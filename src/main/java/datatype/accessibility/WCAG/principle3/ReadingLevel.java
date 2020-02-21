@@ -8,9 +8,9 @@ public class ReadingLevel extends AbstractCriteria
 {
     public ReadingLevel()
     {
-        super(CriteriaDatabase.CriteriaConstants.ReadingLevel,
-                CriteriaDatabase.CriteriaConstants.ReadingLevelName,
-                CriteriaDatabase.CriteriaConstants.ReadingLevelDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.ReadingLevel,
+                CriteriaDatabase.CriteriaConstants.Name.ReadingLevel,
+                CriteriaDatabase.CriteriaConstants.Description.ReadingLevel);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

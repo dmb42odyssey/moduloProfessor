@@ -8,9 +8,9 @@ public class ErrorPrevention extends AbstractCriteria
 {
     public ErrorPrevention()
     {
-        super(CriteriaDatabase.CriteriaConstants.ErrorPrevention,
-                CriteriaDatabase.CriteriaConstants.ErrorPreventionName,
-                CriteriaDatabase.CriteriaConstants.ErrorPreventionDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.ErrorPrevention,
+                CriteriaDatabase.CriteriaConstants.Name.ErrorPrevention,
+                CriteriaDatabase.CriteriaConstants.Description.ErrorPrevention);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

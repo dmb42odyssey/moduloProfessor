@@ -8,9 +8,9 @@ public class ThreeFlashesOrBelowThreshold extends AbstractCriteria
 {
     public ThreeFlashesOrBelowThreshold()
     {
-        super(CriteriaDatabase.CriteriaConstants.ThreeFlashesOrBelowThreshold,
-                CriteriaDatabase.CriteriaConstants.ThreeFlashesOrBelowThresholdName,
-                CriteriaDatabase.CriteriaConstants.ThreeFlashesOrBelowThresholdDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.ThreeFlashesOrBelowThreshold,
+                CriteriaDatabase.CriteriaConstants.Name.ThreeFlashesOrBelowThreshold,
+                CriteriaDatabase.CriteriaConstants.Description.ThreeFlashesOrBelowThreshold);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

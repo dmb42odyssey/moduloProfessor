@@ -9,9 +9,9 @@ public class LanguageOfPage extends AbstractCriteria
 {
     public LanguageOfPage()
     {
-        super(CriteriaDatabase.CriteriaConstants.LanguageOfPage,
-                CriteriaDatabase.CriteriaConstants.LanguageOfPageName,
-                CriteriaDatabase.CriteriaConstants.LanguageOfPageDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.LanguageOfPage,
+                CriteriaDatabase.CriteriaConstants.Name.LanguageOfPage,
+                CriteriaDatabase.CriteriaConstants.Description.LanguageOfPage);
         super.conformanceLevel = ConformanceLevel.A;
     }
 

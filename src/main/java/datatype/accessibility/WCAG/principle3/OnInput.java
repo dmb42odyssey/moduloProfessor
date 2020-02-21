@@ -8,9 +8,9 @@ public class OnInput extends AbstractCriteria
 {
     public OnInput()
     {
-        super(CriteriaDatabase.CriteriaConstants.OnInput,
-                CriteriaDatabase.CriteriaConstants.OnInputName,
-                CriteriaDatabase.CriteriaConstants.OnInputDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.OnInput,
+                CriteriaDatabase.CriteriaConstants.Name.OnInput,
+                CriteriaDatabase.CriteriaConstants.Description.OnInput);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

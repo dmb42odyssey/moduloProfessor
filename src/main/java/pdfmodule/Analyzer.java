@@ -25,24 +25,34 @@ public class Analyzer {
     private List<AbstractPrinciple> principleList;
     private PDDocument document;
     private ExtractionResult extractionResult;
+    private ConformanceLevel overallConformace;
 
     public Analyzer(ExtractionResult extractionResult, PDDocument document)
     {
-        extractionResult = this.extractionResult;
-        document = this.document;
+        this.extractionResult = extractionResult;
+        this.document = document;
     }
 
-    public void analyzeDocument()
+    public List<AbstractPrinciple> getPrincipleList()
+    {
+        return principleList;
+    }
+
+    public ConformanceLevel getOverallConformance()
+    {
+        return overallConformace;
+    }
+
+    public List<AbstractPrinciple> analyzeDocument()
     {
         SetupParameters setupParameters = new SetupParameters();
         principleList = setupParameters.buildDataSctructure();
-        checkAllCriterias();
-        // debugPrint();
+        overallConformace = checkAllCriterias();
+        return principleList;
     }
 
     private ConformanceLevel checkAllCriterias()
     {
-        System.out.println("Creation ended");
         for(AbstractPrinciple principle : principleList)
         {
             for(AbstractGuideline guideline :principle.getGuidelineMap())
@@ -60,20 +70,20 @@ public class Analyzer {
                 }
             }
         }
-
-        // TO DO
         return obtainConformity();
     }
 
+    /* This method selects the criteria's respective check
+     * In total, there is 61. (Work In Progress)
+     */
     private void selectCriteriaCheck(AbstractCriteria criteria)
     {
-        // 61
         switch(criteria.getId())
         {
-            case CriteriaConstants.PageTitled:
-                ((PageTitled) criteria).testSufficience(extractionResult.getText());
+            case CriteriaConstants.ID.PageTitled:
+                ((PageTitled) criteria).testSufficience(document.getDocumentInformation());
                 break;
-            case CriteriaConstants.LanguageOfPage:
+            case CriteriaConstants.ID.LanguageOfPage:
                 ((LanguageOfPage) criteria).testSufficience(document.getDocumentCatalog());
                 break;
             default:
@@ -110,6 +120,8 @@ public class Analyzer {
         {
             if(criteria.getConformanceLevel() != criteria.getCurrentConformanceLevel())
             {
+                /* Final conformance level is criteria's conformance lowered by a conformance level.
+                 */
                 finalConformanceLevel = criteria.getConformanceLevel().lowerConformance(criteria.getConformanceLevel());
                 break;
             }
@@ -118,8 +130,7 @@ public class Analyzer {
         return finalConformanceLevel;
     }
 
-    // DEBUG
-    private void debugPrint()
+    private void debugPrintStructure()
     {
         System.out.println("Creation ended");
         for(AbstractPrinciple principle : principleList)

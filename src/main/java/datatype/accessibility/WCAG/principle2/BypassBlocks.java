@@ -8,9 +8,9 @@ public class BypassBlocks extends AbstractCriteria
 {
     public BypassBlocks()
     {
-        super(CriteriaDatabase.CriteriaConstants.BypassBlocks,
-                CriteriaDatabase.CriteriaConstants.BypassBlocksName,
-                CriteriaDatabase.CriteriaConstants.BypassBlocksDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.BypassBlocks,
+                CriteriaDatabase.CriteriaConstants.Name.BypassBlocks,
+                CriteriaDatabase.CriteriaConstants.Description.BypassBlocks);
         super.conformanceLevel = ConformanceLevel.A;
     }
 

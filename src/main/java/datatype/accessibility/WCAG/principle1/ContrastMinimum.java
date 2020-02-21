@@ -8,9 +8,9 @@ public class ContrastMinimum extends AbstractCriteria
 {
     public ContrastMinimum()
     {
-        super(CriteriaDatabase.CriteriaConstants.ContrastMinimum,
-                CriteriaDatabase.CriteriaConstants.ContrastMinimumName,
-                CriteriaDatabase.CriteriaConstants.ContrastMinimumDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.ContrastMinimum,
+                CriteriaDatabase.CriteriaConstants.Name.ContrastMinimum,
+                CriteriaDatabase.CriteriaConstants.Description.ContrastMinimum);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

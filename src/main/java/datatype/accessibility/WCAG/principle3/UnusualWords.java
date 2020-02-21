@@ -8,9 +8,9 @@ public class UnusualWords extends AbstractCriteria
 {
     public UnusualWords()
     {
-        super(CriteriaDatabase.CriteriaConstants.UnusualWords,
-                CriteriaDatabase.CriteriaConstants.UnusualWordsName,
-                CriteriaDatabase.CriteriaConstants.UnusualWordsDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.UnusualWords,
+                CriteriaDatabase.CriteriaConstants.Name.UnusualWords,
+                CriteriaDatabase.CriteriaConstants.Description.UnusualWords);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

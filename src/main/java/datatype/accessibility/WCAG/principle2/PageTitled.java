@@ -4,6 +4,8 @@ import database.CriteriaDatabase;
 import datatype.Text;
 import datatype.accessibility.AbstractCriteria;
 import datatype.accessibility.ConformanceLevel;
+import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 
 import java.util.List;
 
@@ -11,26 +13,21 @@ public class PageTitled extends AbstractCriteria
 {
     public PageTitled()
     {
-        super(CriteriaDatabase.CriteriaConstants.PageTitled,
-                CriteriaDatabase.CriteriaConstants.PageTitledName,
-                CriteriaDatabase.CriteriaConstants.PageTitledDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.PageTitled,
+                CriteriaDatabase.CriteriaConstants.Name.PageTitled,
+                CriteriaDatabase.CriteriaConstants.Description.PageTitled);
         super.conformanceLevel = ConformanceLevel.A;
     }
 
-    /*
-     * TO DO: Also test if the title's content is relevant to the
-     * text.
-     */
-    public void testSufficience(List<Text> textList)
+    public void testSufficience(PDDocumentInformation documentInformation)
     {
-        boolean textTitle = false;
-        for(Text text : textList)
+        if(documentInformation.getTitle() != null)
         {
-            if (text.getClassification().equals("header-1")) {
-                textTitle = true;
-                break;
-            }
+            setCurrentConformanceLevel(getConformanceLevel());
         }
-        setIsSufficient(textTitle);
+        else
+        {
+            setCurrentConformanceLevel(null);
+        }
     }
 }

@@ -8,9 +8,9 @@ public class LowOrNoBackgroundAudio extends AbstractCriteria
 {
     public LowOrNoBackgroundAudio()
     {
-        super(CriteriaDatabase.CriteriaConstants.LowOrNoBackgroundAudio,
-                CriteriaDatabase.CriteriaConstants.LowOrNoBackgroundAudioName,
-                CriteriaDatabase.CriteriaConstants.LowOrNoBackgroundAudioDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.LowOrNoBackgroundAudio,
+                CriteriaDatabase.CriteriaConstants.Name.LowOrNoBackgroundAudio,
+                CriteriaDatabase.CriteriaConstants.Description.LowOrNoBackgroundAudio);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

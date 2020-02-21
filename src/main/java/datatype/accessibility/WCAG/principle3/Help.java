@@ -8,9 +8,9 @@ public class Help extends AbstractCriteria
 {
     public Help()
     {
-        super(CriteriaDatabase.CriteriaConstants.Help,
-                CriteriaDatabase.CriteriaConstants.HelpName,
-                CriteriaDatabase.CriteriaConstants.HelpDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.Help,
+                CriteriaDatabase.CriteriaConstants.Name.Help,
+                CriteriaDatabase.CriteriaConstants.Description.Help);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 

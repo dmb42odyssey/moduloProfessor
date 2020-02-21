@@ -8,9 +8,9 @@ public class Pronunciation extends AbstractCriteria
 {
     public Pronunciation()
     {
-        super(CriteriaDatabase.CriteriaConstants.Pronunciation,
-                CriteriaDatabase.CriteriaConstants.PronunciationName,
-                CriteriaDatabase.CriteriaConstants.PronunciationDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.Pronunciation,
+                CriteriaDatabase.CriteriaConstants.Name.Pronunciation,
+                CriteriaDatabase.CriteriaConstants.Description.Pronunciation);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

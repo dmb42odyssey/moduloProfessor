@@ -8,9 +8,9 @@ public class NameRoleValue extends AbstractCriteria
 {
     public NameRoleValue()
     {
-        super(CriteriaDatabase.CriteriaConstants.NameRoleValue,
-                CriteriaDatabase.CriteriaConstants.NameRoleValueName,
-                CriteriaDatabase.CriteriaConstants.NameRoleValueDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.NameRoleValue,
+                CriteriaDatabase.CriteriaConstants.Name.NameRoleValue,
+                CriteriaDatabase.CriteriaConstants.Description.NameRoleValue);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

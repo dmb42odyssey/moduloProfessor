@@ -8,9 +8,9 @@ public class MeaningfulSequence extends AbstractCriteria {
 
     public MeaningfulSequence()
     {
-        super(CriteriaDatabase.CriteriaConstants.MeaningfulSequence,
-                CriteriaDatabase.CriteriaConstants.MeaningfulSequenceName,
-                CriteriaDatabase.CriteriaConstants.MeaningfulSequenceDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.MeaningfulSequence,
+                CriteriaDatabase.CriteriaConstants.Name.MeaningfulSequence,
+                CriteriaDatabase.CriteriaConstants.Description.MeaningfulSequence);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

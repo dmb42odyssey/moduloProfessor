@@ -8,9 +8,9 @@ public class Interruptions extends AbstractCriteria
 {
     public Interruptions()
     {
-        super(CriteriaDatabase.CriteriaConstants.Interruptions,
-                CriteriaDatabase.CriteriaConstants.InterruptionsName,
-                CriteriaDatabase.CriteriaConstants.InterruptionsDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.Interruptions,
+                CriteriaDatabase.CriteriaConstants.Name.Interruptions,
+                CriteriaDatabase.CriteriaConstants.Description.Interruptions);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

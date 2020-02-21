@@ -8,9 +8,9 @@ public class OnFocus extends AbstractCriteria
 {
     public OnFocus()
     {
-        super(CriteriaDatabase.CriteriaConstants.OnFocus,
-                CriteriaDatabase.CriteriaConstants.OnFocusName,
-                CriteriaDatabase.CriteriaConstants.OnFocusDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.OnFocus,
+                CriteriaDatabase.CriteriaConstants.Name.OnFocus,
+                CriteriaDatabase.CriteriaConstants.Description.OnFocus);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

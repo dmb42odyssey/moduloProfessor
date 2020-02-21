@@ -8,9 +8,9 @@ public class MultipleWays extends AbstractCriteria
 {
     public MultipleWays()
     {
-        super(CriteriaDatabase.CriteriaConstants.MultipleWays,
-                CriteriaDatabase.CriteriaConstants.MultipleWaysName,
-                CriteriaDatabase.CriteriaConstants.MultipleWaysDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.MultipleWays,
+                CriteriaDatabase.CriteriaConstants.Name.MultipleWays,
+                CriteriaDatabase.CriteriaConstants.Description.MultipleWays);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

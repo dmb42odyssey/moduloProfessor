@@ -10,9 +10,9 @@ public class AudioDescriptionOrMediaAlternative extends AbstractCriteria {
 
     public AudioDescriptionOrMediaAlternative()
     {
-        super(CriteriaDatabase.CriteriaConstants.AudioDescriptionMediaAlternative,
-                CriteriaDatabase.CriteriaConstants.AudioDescriptionMediaAlternativeName,
-                CriteriaDatabase.CriteriaConstants.AudioDescriptionMediaAlternativeDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.AudioDescriptionMediaAlternative,
+                CriteriaDatabase.CriteriaConstants.Name.AudioDescriptionMediaAlternative,
+                CriteriaDatabase.CriteriaConstants.Description.AudioDescriptionMediaAlternative);
         super.conformanceLevel = ConformanceLevel.A;
     }
 

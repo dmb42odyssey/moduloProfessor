@@ -8,9 +8,9 @@ public class KeyboardNoException extends AbstractCriteria
 {
     public KeyboardNoException()
     {
-        super(CriteriaDatabase.CriteriaConstants.KeyboardNoException,
-                CriteriaDatabase.CriteriaConstants.KeyboardNoExceptionName,
-                CriteriaDatabase.CriteriaConstants.KeyboardNoExceptionDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.KeyboardNoException,
+                CriteriaDatabase.CriteriaConstants.Name.KeyboardNoException,
+                CriteriaDatabase.CriteriaConstants.Description.KeyboardNoException);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

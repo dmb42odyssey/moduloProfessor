@@ -8,9 +8,9 @@ public class ConsistentNavigation extends AbstractCriteria
 {
     public ConsistentNavigation()
     {
-        super(CriteriaDatabase.CriteriaConstants.ConsistentNavigation,
-                CriteriaDatabase.CriteriaConstants.ConsistentNavigationName,
-                CriteriaDatabase.CriteriaConstants.ConsistentNavigationDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.ConsistentNavigation,
+                CriteriaDatabase.CriteriaConstants.Name.ConsistentNavigation,
+                CriteriaDatabase.CriteriaConstants.Description.ConsistentNavigation);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 

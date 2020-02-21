@@ -13,9 +13,9 @@ public class AudioOnlyVideoOnly extends AbstractCriteria {
 
     public AudioOnlyVideoOnly()
     {
-        super(CriteriaDatabase.CriteriaConstants.AudioOnlyVideoOnly,
-                CriteriaDatabase.CriteriaConstants.AudioOnlyVideoOnlyName,
-                CriteriaDatabase.CriteriaConstants.AudioOnlyVideoOnlyDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.AudioOnlyVideoOnly,
+                CriteriaDatabase.CriteriaConstants.Name.AudioOnlyVideoOnly,
+                CriteriaDatabase.CriteriaConstants.Description.AudioOnlyVideoOnly);
         super.conformanceLevel = ConformanceLevel.A;
     }
 

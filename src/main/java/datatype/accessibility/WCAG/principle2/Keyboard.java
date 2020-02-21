@@ -8,9 +8,9 @@ public class Keyboard extends AbstractCriteria
 {
     public Keyboard()
     {
-        super(CriteriaDatabase.CriteriaConstants.Keyboard,
-                CriteriaDatabase.CriteriaConstants.KeyboardName,
-                CriteriaDatabase.CriteriaConstants.KeyboardDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.Keyboard,
+                CriteriaDatabase.CriteriaConstants.Name.Keyboard,
+                CriteriaDatabase.CriteriaConstants.Description.Keyboard);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

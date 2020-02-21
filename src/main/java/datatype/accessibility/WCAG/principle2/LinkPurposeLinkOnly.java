@@ -8,9 +8,9 @@ public class LinkPurposeLinkOnly extends AbstractCriteria
 {
     public LinkPurposeLinkOnly()
     {
-        super(CriteriaDatabase.CriteriaConstants.LinkPurposeLinkOnly,
-                CriteriaDatabase.CriteriaConstants.LinkPurposeLinkOnlyName,
-                CriteriaDatabase.CriteriaConstants.LinkPurposeLinkOnlyDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.LinkPurposeLinkOnly,
+                CriteriaDatabase.CriteriaConstants.Name.LinkPurposeLinkOnly,
+                CriteriaDatabase.CriteriaConstants.Description.LinkPurposeLinkOnly);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

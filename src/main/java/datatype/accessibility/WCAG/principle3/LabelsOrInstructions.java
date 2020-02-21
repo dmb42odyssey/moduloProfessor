@@ -8,9 +8,9 @@ public class LabelsOrInstructions extends AbstractCriteria
 {
     public LabelsOrInstructions()
     {
-        super(CriteriaDatabase.CriteriaConstants.LabelsOrInstructions,
-                CriteriaDatabase.CriteriaConstants.LabelsOrInstructionsName,
-                CriteriaDatabase.CriteriaConstants.LabelsOrInstructionsDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.LabelsOrInstructions,
+                CriteriaDatabase.CriteriaConstants.Name.LabelsOrInstructions,
+                CriteriaDatabase.CriteriaConstants.Description.LabelsOrInstructions);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

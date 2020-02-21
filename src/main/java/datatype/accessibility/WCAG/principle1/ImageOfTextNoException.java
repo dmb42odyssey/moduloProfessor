@@ -8,9 +8,9 @@ public class ImageOfTextNoException extends AbstractCriteria
 {
     public ImageOfTextNoException()
     {
-        super(CriteriaDatabase.CriteriaConstants.ImageOfTextNoException,
-                CriteriaDatabase.CriteriaConstants.ImageOfTextNoExceptionName,
-                CriteriaDatabase.CriteriaConstants.ImageOfTextNoExceptionDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.ImageOfTextNoException,
+                CriteriaDatabase.CriteriaConstants.Name.ImageOfTextNoException,
+                CriteriaDatabase.CriteriaConstants.Description.ImageOfTextNoException);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

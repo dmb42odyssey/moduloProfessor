@@ -8,9 +8,9 @@ public class PauseStopHide extends AbstractCriteria
 {
     public PauseStopHide()
     {
-        super(CriteriaDatabase.CriteriaConstants.PauseStopHide,
-                CriteriaDatabase.CriteriaConstants.PauseStopHideName,
-                CriteriaDatabase.CriteriaConstants.PauseStopHideDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.PauseStopHide,
+                CriteriaDatabase.CriteriaConstants.Name.PauseStopHide,
+                CriteriaDatabase.CriteriaConstants.Description.PauseStopHide);
         super.conformanceLevel = ConformanceLevel.A;
     }
 

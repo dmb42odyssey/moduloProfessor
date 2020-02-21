@@ -8,9 +8,9 @@ public class VisualPresentation extends AbstractCriteria
 {
     public VisualPresentation()
     {
-        super(CriteriaDatabase.CriteriaConstants.VisualPresentation,
-                CriteriaDatabase.CriteriaConstants.VisualPresentationName,
-                CriteriaDatabase.CriteriaConstants.VisualPresentationDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.VisualPresentation,
+                CriteriaDatabase.CriteriaConstants.Name.VisualPresentation,
+                CriteriaDatabase.CriteriaConstants.Description.VisualPresentation);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

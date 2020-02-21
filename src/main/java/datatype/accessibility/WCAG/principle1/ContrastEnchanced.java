@@ -8,9 +8,9 @@ public class ContrastEnchanced extends AbstractCriteria
 {
     public ContrastEnchanced()
     {
-        super(CriteriaDatabase.CriteriaConstants.ContrastEnchanced,
-                CriteriaDatabase.CriteriaConstants.ContrastEnchancedName,
-                CriteriaDatabase.CriteriaConstants.ContrastEnchancedDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.ContrastEnchanced,
+                CriteriaDatabase.CriteriaConstants.Name.ContrastEnchanced,
+                CriteriaDatabase.CriteriaConstants.Description.ContrastEnchanced);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

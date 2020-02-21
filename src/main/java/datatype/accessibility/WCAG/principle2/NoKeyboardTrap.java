@@ -8,9 +8,9 @@ public class NoKeyboardTrap extends AbstractCriteria
 {
     public NoKeyboardTrap()
     {
-        super(CriteriaDatabase.CriteriaConstants.NoKeyboardTrap,
-                CriteriaDatabase.CriteriaConstants.NoKeyboardTrapName,
-                CriteriaDatabase.CriteriaConstants.NoKeyboardTrapDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.NoKeyboardTrap,
+                CriteriaDatabase.CriteriaConstants.Name.NoKeyboardTrap,
+                CriteriaDatabase.CriteriaConstants.Description.NoKeyboardTrap);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

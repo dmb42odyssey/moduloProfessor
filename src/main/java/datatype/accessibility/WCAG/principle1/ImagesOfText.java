@@ -8,9 +8,9 @@ public class ImagesOfText extends AbstractCriteria
 {
     public ImagesOfText()
     {
-        super(CriteriaDatabase.CriteriaConstants.ImagesOfText,
-                CriteriaDatabase.CriteriaConstants.ImagesOfTextName,
-                CriteriaDatabase.CriteriaConstants.ImagesOfTextDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.ImagesOfText,
+                CriteriaDatabase.CriteriaConstants.Name.ImagesOfText,
+                CriteriaDatabase.CriteriaConstants.Description.ImagesOfText);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

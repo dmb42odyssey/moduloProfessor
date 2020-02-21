@@ -8,9 +8,9 @@ public class ChangeOnRequest extends AbstractCriteria
 {
     public ChangeOnRequest()
     {
-        super(CriteriaDatabase.CriteriaConstants.ChangeOnRequest,
-                CriteriaDatabase.CriteriaConstants.ChangeOnRequestName,
-                CriteriaDatabase.CriteriaConstants.ChangeOnRequestDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.ChangeOnRequest,
+                CriteriaDatabase.CriteriaConstants.Name.ChangeOnRequest,
+                CriteriaDatabase.CriteriaConstants.Description.ChangeOnRequest);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

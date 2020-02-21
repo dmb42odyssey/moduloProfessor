@@ -17,13 +17,18 @@ public class ResultSupplier
     static List<AbstractCriteria> succeededCriteriaList;
     static List<AbstractCriteria> failedCriteriaList;
 
-    public static void getAllApplicable(List<AbstractPrinciple> abstractPrincipleList)
+    public ResultSupplier(List<AbstractPrinciple> abstractPrincipleList)
+    {
+        getAllApplicable(abstractPrincipleList);
+    }
+
+    private void getAllApplicable(List<AbstractPrinciple> abstractPrincipleList)
     {
        succeededCriteriaList = getAllSuccessful(abstractPrincipleList);
        failedCriteriaList = getAllFailed(abstractPrincipleList);
     }
 
-    public static List<AbstractCriteria> getAllSuccessful(List<AbstractPrinciple> abstractPrincipleList)
+    private List<AbstractCriteria> getAllSuccessful(List<AbstractPrinciple> abstractPrincipleList)
     {
 
         List<AbstractCriteria> successList = new ArrayList<>();
@@ -36,7 +41,7 @@ public class ResultSupplier
                 {
                     if(criteria.getIsApplicable() && criteria.getIsSufficient())
                     {
-                        //
+                        successList.add(criteria);
                     }
                 }
             }
@@ -46,7 +51,7 @@ public class ResultSupplier
 
     }
 
-    public static List<AbstractCriteria> getAllFailed(List<AbstractPrinciple> abstractPrincipleList)
+    private List<AbstractCriteria> getAllFailed(List<AbstractPrinciple> abstractPrincipleList)
     {
 
         List<AbstractCriteria> faiList = new ArrayList<>();
@@ -59,18 +64,35 @@ public class ResultSupplier
                 {
                     if(criteria.getIsApplicable() && !criteria.getIsSufficient())
                     {
-                        System.out.println("Criteria failed: ");
-                        printCriteria(criteria);
+                        faiList.add(criteria);
                     }
                 }
             }
         }
 
         return faiList;
-
     }
 
-    private static void printCriteria(AbstractCriteria criteria)
+    public void printAllSuccessful()
+    {
+        System.out.println("-- Critérios atendidos com sucesso: --");
+        for(AbstractCriteria criteria : succeededCriteriaList)
+        {
+            printCriteria(criteria);
+        }
+    }
+
+    public void printAllFailed()
+    {
+        System.out.println("-- Critérios que não foram atendidos --");
+        for(AbstractCriteria criteria : failedCriteriaList)
+        {
+            printCriteria(criteria);
+            System.out.println(criteria.getSolutionText());
+        }
+    }
+
+    private void printCriteria(AbstractCriteria criteria)
     {
         System.out.println(criteria.getName());
         System.out.println(criteria.getDescription());

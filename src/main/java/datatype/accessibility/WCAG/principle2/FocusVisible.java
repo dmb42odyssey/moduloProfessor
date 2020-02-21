@@ -8,9 +8,9 @@ public class FocusVisible extends AbstractCriteria
 {
     public FocusVisible()
     {
-        super(CriteriaDatabase.CriteriaConstants.FocusVisible,
-                CriteriaDatabase.CriteriaConstants.FocusVisibleName,
-                CriteriaDatabase.CriteriaConstants.FocusVisibleDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.FocusVisible,
+                CriteriaDatabase.CriteriaConstants.Name.FocusVisible,
+                CriteriaDatabase.CriteriaConstants.Description.FocusVisible);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

@@ -87,89 +87,89 @@ public class SetupParameters {
     {
         Map<String, List<String>> guideLineToCriteriasMap =  new HashMap<>();
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.TextAlternatives, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.NonTextContent
+                CriteriaDatabase.CriteriaConstants.ID.NonTextContent
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.TimeBasedMedia, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.AudioOnlyVideoOnly,
-                CriteriaDatabase.CriteriaConstants.CaptionsPreRecorded,
-                CriteriaDatabase.CriteriaConstants.AudioDescriptionMediaAlternative,
-                CriteriaDatabase.CriteriaConstants.CaptionsLive,
-                CriteriaDatabase.CriteriaConstants.AudioDescription,
-                CriteriaDatabase.CriteriaConstants.SignLanguage,
-                CriteriaDatabase.CriteriaConstants.ExtendedAudioDescription,
-                CriteriaDatabase.CriteriaConstants.MediaAlternative,
-                CriteriaDatabase.CriteriaConstants.AudioOnlyLive
+                CriteriaDatabase.CriteriaConstants.ID.AudioOnlyVideoOnly,
+                CriteriaDatabase.CriteriaConstants.ID.CaptionsPreRecorded,
+                CriteriaDatabase.CriteriaConstants.ID.AudioDescriptionMediaAlternative,
+                CriteriaDatabase.CriteriaConstants.ID.CaptionsLive,
+                CriteriaDatabase.CriteriaConstants.ID.AudioDescription,
+                CriteriaDatabase.CriteriaConstants.ID.SignLanguage,
+                CriteriaDatabase.CriteriaConstants.ID.ExtendedAudioDescription,
+                CriteriaDatabase.CriteriaConstants.ID.MediaAlternative,
+                CriteriaDatabase.CriteriaConstants.ID.AudioOnlyLive
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Adaptable, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.InfoRelationship,
-                CriteriaDatabase.CriteriaConstants.MeaningfulSequence,
-                CriteriaDatabase.CriteriaConstants.SensoryCharacteristics
+                CriteriaDatabase.CriteriaConstants.ID.InfoRelationship,
+                CriteriaDatabase.CriteriaConstants.ID.MeaningfulSequence,
+                CriteriaDatabase.CriteriaConstants.ID.SensoryCharacteristics
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Distinguishable, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.UseOfColor,
-                CriteriaDatabase.CriteriaConstants.AudioControl,
-                CriteriaDatabase.CriteriaConstants.ContrastMinimum,
-                CriteriaDatabase.CriteriaConstants.ResizeText,
-                CriteriaDatabase.CriteriaConstants.ImagesOfText,
-                CriteriaDatabase.CriteriaConstants.ContrastEnchanced,
-                CriteriaDatabase.CriteriaConstants.LowOrNoBackgroundAudio,
-                CriteriaDatabase.CriteriaConstants.VisualPresentation,
-                CriteriaDatabase.CriteriaConstants.ImageOfTextNoException
+                CriteriaDatabase.CriteriaConstants.ID.UseOfColor,
+                CriteriaDatabase.CriteriaConstants.ID.AudioControl,
+                CriteriaDatabase.CriteriaConstants.ID.ContrastMinimum,
+                CriteriaDatabase.CriteriaConstants.ID.ResizeText,
+                CriteriaDatabase.CriteriaConstants.ID.ImagesOfText,
+                CriteriaDatabase.CriteriaConstants.ID.ContrastEnchanced,
+                CriteriaDatabase.CriteriaConstants.ID.LowOrNoBackgroundAudio,
+                CriteriaDatabase.CriteriaConstants.ID.VisualPresentation,
+                CriteriaDatabase.CriteriaConstants.ID.ImageOfTextNoException
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.KeyboardAccessible, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.Keyboard,
-                CriteriaDatabase.CriteriaConstants.NoKeyboardTrap,
-                CriteriaDatabase.CriteriaConstants.KeyboardNoException
+                CriteriaDatabase.CriteriaConstants.ID.Keyboard,
+                CriteriaDatabase.CriteriaConstants.ID.NoKeyboardTrap,
+                CriteriaDatabase.CriteriaConstants.ID.KeyboardNoException
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.EnoughTime, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.TimingAdjustable,
-                CriteriaDatabase.CriteriaConstants.PauseStopHide,
-                CriteriaDatabase.CriteriaConstants.NoTiming,
-                CriteriaDatabase.CriteriaConstants.Interruptions,
-                CriteriaDatabase.CriteriaConstants.ReAuthenticating
+                CriteriaDatabase.CriteriaConstants.ID.TimingAdjustable,
+                CriteriaDatabase.CriteriaConstants.ID.PauseStopHide,
+                CriteriaDatabase.CriteriaConstants.ID.NoTiming,
+                CriteriaDatabase.CriteriaConstants.ID.Interruptions,
+                CriteriaDatabase.CriteriaConstants.ID.ReAuthenticating
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Seizures, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ThreeFlashesOrBelowThreshold ,
-                CriteriaDatabase.CriteriaConstants.ThreeFlashes
+                CriteriaDatabase.CriteriaConstants.ID.ThreeFlashesOrBelowThreshold ,
+                CriteriaDatabase.CriteriaConstants.ID.ThreeFlashes
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Navigable, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.BypassBlocks,
-                CriteriaDatabase.CriteriaConstants.PageTitled,
-                CriteriaDatabase.CriteriaConstants.FocusOrder,
-                CriteriaDatabase.CriteriaConstants.LinkPurposeInContext,
-                CriteriaDatabase.CriteriaConstants.MultipleWays,
-                CriteriaDatabase.CriteriaConstants.HeadingsAndLabels,
-                CriteriaDatabase.CriteriaConstants.FocusVisible,
-                CriteriaDatabase.CriteriaConstants.Location,
-                CriteriaDatabase.CriteriaConstants.LinkPurposeLinkOnly,
-                CriteriaDatabase.CriteriaConstants.SectionHeadings
+                CriteriaDatabase.CriteriaConstants.ID.BypassBlocks,
+                CriteriaDatabase.CriteriaConstants.ID.PageTitled,
+                CriteriaDatabase.CriteriaConstants.ID.FocusOrder,
+                CriteriaDatabase.CriteriaConstants.ID.LinkPurposeInContext,
+                CriteriaDatabase.CriteriaConstants.ID.MultipleWays,
+                CriteriaDatabase.CriteriaConstants.ID.HeadingsAndLabels,
+                CriteriaDatabase.CriteriaConstants.ID.FocusVisible,
+                CriteriaDatabase.CriteriaConstants.ID.Location,
+                CriteriaDatabase.CriteriaConstants.ID.LinkPurposeLinkOnly,
+                CriteriaDatabase.CriteriaConstants.ID.SectionHeadings
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Readable, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.LanguageOfPage,
-                CriteriaDatabase.CriteriaConstants.LanguageOfParts,
-                CriteriaDatabase.CriteriaConstants.UnusualWords,
-                CriteriaDatabase.CriteriaConstants.Abbreviations,
-                CriteriaDatabase.CriteriaConstants.ReadingLevel,
-                CriteriaDatabase.CriteriaConstants.Pronunciation
+                CriteriaDatabase.CriteriaConstants.ID.LanguageOfPage,
+                CriteriaDatabase.CriteriaConstants.ID.LanguageOfParts,
+                CriteriaDatabase.CriteriaConstants.ID.UnusualWords,
+                CriteriaDatabase.CriteriaConstants.ID.Abbreviations,
+                CriteriaDatabase.CriteriaConstants.ID.ReadingLevel,
+                CriteriaDatabase.CriteriaConstants.ID.Pronunciation
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Predictable, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.OnFocus,
-                CriteriaDatabase.CriteriaConstants.OnInput,
-                CriteriaDatabase.CriteriaConstants.ConsistentNavigation,
-                CriteriaDatabase.CriteriaConstants.ConsistentIdentification,
-                CriteriaDatabase.CriteriaConstants.ChangeOnRequest
+                CriteriaDatabase.CriteriaConstants.ID.OnFocus,
+                CriteriaDatabase.CriteriaConstants.ID.OnInput,
+                CriteriaDatabase.CriteriaConstants.ID.ConsistentNavigation,
+                CriteriaDatabase.CriteriaConstants.ID.ConsistentIdentification,
+                CriteriaDatabase.CriteriaConstants.ID.ChangeOnRequest
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.InputAssistance, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ErrorIdentification,
-                CriteriaDatabase.CriteriaConstants.LabelsOrInstructions,
-                CriteriaDatabase.CriteriaConstants.ErrorSuggestion,
-                CriteriaDatabase.CriteriaConstants.ErrorPrevention ,
-                CriteriaDatabase.CriteriaConstants.Help ,
-                CriteriaDatabase.CriteriaConstants.ErrorPreventionAll
+                CriteriaDatabase.CriteriaConstants.ID.ErrorIdentification,
+                CriteriaDatabase.CriteriaConstants.ID.LabelsOrInstructions,
+                CriteriaDatabase.CriteriaConstants.ID.ErrorSuggestion,
+                CriteriaDatabase.CriteriaConstants.ID.ErrorPrevention ,
+                CriteriaDatabase.CriteriaConstants.ID.Help ,
+                CriteriaDatabase.CriteriaConstants.ID.ErrorPreventionAll
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Compatible, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.Parsing,
-                CriteriaDatabase.CriteriaConstants.NameRoleValue
+                CriteriaDatabase.CriteriaConstants.ID.Parsing,
+                CriteriaDatabase.CriteriaConstants.ID.NameRoleValue
         ));
         return guideLineToCriteriasMap;
     }

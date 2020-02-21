@@ -4,13 +4,17 @@
 package pdfmodule;
 
 import datatype.ExtractionResult;
+import datatype.accessibility.AbstractPrinciple;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class App {
+
+    static List<AbstractPrinciple> abstractPrincipleList;
 
     public static void main(String[] args) throws IOException
     {
@@ -33,12 +37,19 @@ public class App {
             Extractor extractor = new Extractor(document,path);
             ExtractionResult extractionResult = extractor.Extract();
             Analyzer analyzer = new Analyzer(extractionResult, document);
-            analyzer.analyzeDocument();
-            DEBUG(extractionResult);
+            abstractPrincipleList = analyzer.analyzeDocument();
+            ResultSupplier resultSupplier = new ResultSupplier(abstractPrincipleList);
+            if(analyzer.getOverallConformance() == null)
+            {
+                System.out.println("Nível de conformidade do documento: -");
+            }
+            else
+            {
+                System.out.println("Nível de conformidade do documento: " + analyzer.getOverallConformance());
+            }
+            resultSupplier.printAllSuccessful();
+            resultSupplier.printAllFailed();
         }
-
-        // DEBUG
-        System.out.println("Program ended successfully.");
     }
 
     public static void DEBUG(ExtractionResult extractionResult)

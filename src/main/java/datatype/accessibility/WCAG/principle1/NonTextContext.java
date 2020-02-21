@@ -9,20 +9,9 @@ public class NonTextContext extends AbstractCriteria
 {
     public NonTextContext()
     {
-        super(CriteriaDatabase.CriteriaConstants.NonTextContent,
-              CriteriaDatabase.CriteriaConstants.NonTextContentName,
-              CriteriaDatabase.CriteriaConstants.NonTextContentDescription);
+        super(CriteriaDatabase.CriteriaConstants.ID.NonTextContent,
+              CriteriaDatabase.CriteriaConstants.Name.NonTextContent,
+              CriteriaDatabase.CriteriaConstants.Description.NonTextContent);
         super.conformanceLevel = ConformanceLevel.A;
-        System.out.println("!!!!");
-    }
-    /* TRUE: Text (File) alternative
-     * FALSE: Missing key parts of content
-     */
-    public boolean checkIsSufficient(Image image)
-    {
-        // Is there a text associated with this image? (Extractor should ahve done this)
-        // YES -> true
-        // NO -> False.
-        return true;
     }
 }
