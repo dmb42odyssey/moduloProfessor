@@ -8,20 +8,20 @@ import java.util.List;
 /*
  * Template for WCAG criterias. Unlike the guidelines and principles
  * which work similarly, each criteria will have to define its own
- * verification method (checkIsSufficient), due to difference
+ * verification method which is a command class, due to difference
  * in needed parameters (text, image, etc).
  */
-public abstract class AbstractCriteria implements CriteriaBasic {
+public abstract class AbstractCriteria {
 
     protected String id;
     protected String name;
     protected String description;
+    protected String solutionText;
     protected List<String> situation;
     protected ConformanceLevel conformanceLevel;
     protected ConformanceLevel currentConformanceLevel;
     protected boolean isApplicable;
     protected boolean isSufficient;
-    protected String solutionText;
 
     public AbstractCriteria(String id, String name, String description)
     {
@@ -32,11 +32,6 @@ public abstract class AbstractCriteria implements CriteriaBasic {
         situation.add("A");
         currentConformanceLevel = null;
         setIsApplicable(CriteriaDatabase.isEnabled(this));
-    }
-
-    public void testSufficience()
-    {
-        setCurrentConformanceLevel(conformanceLevel);
     }
 
     public String getId() { return id;}

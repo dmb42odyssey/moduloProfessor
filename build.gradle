@@ -45,10 +45,14 @@ jar {
     manifest {
         attributes('Main-Class': MainClass)
     }
-    from(configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) })
-    {
-        exclude "META-INF/*.SF"
-        exclude "META-INF/*.DSA"
-        exclude "META-INF/*.RSA"
+    // SAFE: from(configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) })
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
+   // from(configurations.compile.collect  { it.isDirectory() ? it : zipTree(it) })
+   // {
+   //     exclude "META-INF/*.SF"
+   //     exclude "META-INF/*.DSA"
+   //     exclude "META-INF/*.RSA"
+   // }
 }

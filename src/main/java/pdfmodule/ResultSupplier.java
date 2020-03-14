@@ -3,7 +3,9 @@ package pdfmodule;
 import datatype.accessibility.AbstractCriteria;
 import datatype.accessibility.AbstractGuideline;
 import datatype.accessibility.AbstractPrinciple;
+import datatype.accessibility.ConformanceLevel;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,16 +18,29 @@ public class ResultSupplier
 
     static List<AbstractCriteria> succeededCriteriaList;
     static List<AbstractCriteria> failedCriteriaList;
+    static ConformanceLevel conformanceLevel;
 
-    public ResultSupplier(List<AbstractPrinciple> abstractPrincipleList)
+    public ResultSupplier(List<AbstractPrinciple> abstractPrincipleList, ConformanceLevel conformanceLevel)
     {
-        getAllApplicable(abstractPrincipleList);
+        getAllApplicable(abstractPrincipleList, conformanceLevel);
     }
 
-    private void getAllApplicable(List<AbstractPrinciple> abstractPrincipleList)
+    private void getAllApplicable(List<AbstractPrinciple> abstractPrincipleList, ConformanceLevel conformanceLevel)
     {
        succeededCriteriaList = getAllSuccessful(abstractPrincipleList);
        failedCriteriaList = getAllFailed(abstractPrincipleList);
+       this.conformanceLevel = conformanceLevel;
+    }
+
+    public String ConformanceLevel()
+    {
+
+        if(conformanceLevel == null)
+        {
+            return "Nível de conformidade do documento: -";
+        }
+        return "Nível de conformidade do documento: " + conformanceLevel;
+
     }
 
     private List<AbstractCriteria> getAllSuccessful(List<AbstractPrinciple> abstractPrincipleList)
@@ -48,7 +63,6 @@ public class ResultSupplier
         }
 
         return successList;
-
     }
 
     private List<AbstractCriteria> getAllFailed(List<AbstractPrinciple> abstractPrincipleList)
@@ -98,4 +112,28 @@ public class ResultSupplier
         System.out.println(criteria.getDescription());
     }
 
+    public String formatedHTMLresult()
+    {
+        String bodyHTML = "<h1> Resultado </h1>\n";
+        bodyHTML += ConformanceLevel() + "\n";
+
+        bodyHTML += "<h2>" + "Critérios atendidos:" + "</h2>" + "\n";
+
+        for(AbstractCriteria criteria : succeededCriteriaList)
+        {
+            bodyHTML += "<h3>" + criteria.getName() +  "</h3>"  + "\n";
+            bodyHTML += "<p>" + criteria.getDescription() + "</p>" + "\n";
+        }
+
+        bodyHTML += "<h2>" + "Critérios não atendidos: " + "</h2>" + "\n";
+
+        for(AbstractCriteria criteria : failedCriteriaList)
+        {
+            bodyHTML += "<h3>" + criteria.getName() + "</h3>" + "\n";
+            bodyHTML += "<p>" + criteria.getDescription() + "</p>" + "\n";
+            bodyHTML += "<p>" + "Solução:" + criteria.getSolutionText() + "</p>" + "\n";
+        }
+
+        return bodyHTML;
+    }
 }

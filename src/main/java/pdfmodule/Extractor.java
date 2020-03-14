@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -221,12 +222,6 @@ public class Extractor extends PDFTextStripper
                 PDImageXObject image = (PDImageXObject)xobject;
                 int imageWidth = image.getWidth();
                 int imageHeight = image.getHeight();
-
-
-                /*
-                System.out.println("*******************************************************************");
-                System.out.println("Found image [" + objectName.getName() + "]");
-                */
 
                 Matrix ctmNew = getGraphicsState().getCurrentTransformationMatrix();
                 float imageXScale = ctmNew.getScalingFactorX();

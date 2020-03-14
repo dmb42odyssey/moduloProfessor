@@ -9,12 +9,21 @@ import datatype.accessibility.ConformanceLevel;
 import database.CriteriaDatabase.CriteriaConstants;
 import datatype.accessibility.WCAG.principle2.PageTitled;
 import datatype.accessibility.WCAG.principle3.LanguageOfPage;
+import datatype.accessibility.check.CheckAgent;
+import datatype.accessibility.check.CriteriaCheckFactory;
+import datatype.accessibility.check.ICriteriaCheck;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDStructureElementNameTreeNode;
+import org.apache.pdfbox.pdmodel.common.PDNameTreeNode;
+import org.apache.pdfbox.pdmodel.documentinterchange.logicalstructure.PDStructureElement;
+import org.apache.pdfbox.pdmodel.documentinterchange.logicalstructure.PDStructureTreeRoot;
 
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 
 /* All tasks related to checking if the conformity level is assured
@@ -53,15 +62,24 @@ public class Analyzer {
 
     private ConformanceLevel checkAllCriterias()
     {
+        /* Invoker for ICriteriaCheck */
+        CheckAgent checkAgent = new CheckAgent();
+
+        CriteriaCheckFactory criteriaCheckFactory = new CriteriaCheckFactory();
+
         for(AbstractPrinciple principle : principleList)
         {
             for(AbstractGuideline guideline :principle.getGuidelineMap())
             {
                 for(AbstractCriteria criteria: guideline.getCriteriaList())
                 {
-                    if(criteria.getIsApplicable())
+                    /* Get respective check command */
+                    ICriteriaCheck criteriaCheck = criteriaCheckFactory.getCriteriaCheck(criteria, document);
+                    /* TO DO: Only add implemented checks (61 total) */
+                    if(criteriaCheck != null)
                     {
-                        selectCriteriaCheck(criteria);
+                        /* Invoker executes check command */
+                        checkAgent.placeCheck(criteriaCheck);
                     }
                     else
                     {
@@ -70,25 +88,8 @@ public class Analyzer {
                 }
             }
         }
-        return obtainConformity();
-    }
 
-    /* This method selects the criteria's respective check
-     * In total, there is 61. (Work In Progress)
-     */
-    private void selectCriteriaCheck(AbstractCriteria criteria)
-    {
-        switch(criteria.getId())
-        {
-            case CriteriaConstants.ID.PageTitled:
-                ((PageTitled) criteria).testSufficience(document.getDocumentInformation());
-                break;
-            case CriteriaConstants.ID.LanguageOfPage:
-                ((LanguageOfPage) criteria).testSufficience(document.getDocumentCatalog());
-                break;
-            default:
-                break;
-        }
+        return obtainConformity();
     }
 
     private ConformanceLevel obtainConformity()

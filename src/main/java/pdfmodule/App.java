@@ -38,17 +38,11 @@ public class App {
             ExtractionResult extractionResult = extractor.Extract();
             Analyzer analyzer = new Analyzer(extractionResult, document);
             abstractPrincipleList = analyzer.analyzeDocument();
-            ResultSupplier resultSupplier = new ResultSupplier(abstractPrincipleList);
-            if(analyzer.getOverallConformance() == null)
-            {
-                System.out.println("Nível de conformidade do documento: -");
-            }
-            else
-            {
-                System.out.println("Nível de conformidade do documento: " + analyzer.getOverallConformance());
-            }
-            resultSupplier.printAllSuccessful();
-            resultSupplier.printAllFailed();
+            ResultSupplier resultSupplier = new ResultSupplier(abstractPrincipleList, analyzer.getOverallConformance());
+            System.out.print(resultSupplier.formatedHTMLresult());
+            //resultSupplier.printAllSuccessful();
+            //resultSupplier.printAllFailed();
+            //resultSupplier.printConformanceLevel();
         }
     }
 
