@@ -10,8 +10,8 @@ public class LinkPurposeInContext extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.LinkPurposeInContext,
                 CriteriaDatabase.CriteriaConstants.Name.LinkPurposeInContext,
-                CriteriaDatabase.CriteriaConstants.Description.LinkPurposeInContext
-                );
+                CriteriaDatabase.CriteriaConstants.Description.LinkPurposeInContext,
+                CriteriaDatabase.CriteriaConstants.Solution.LinkPurposeInContext);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

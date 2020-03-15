@@ -10,7 +10,8 @@ public class ConsistentIdentification extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.ConsistentIdentification,
                 CriteriaDatabase.CriteriaConstants.Name.ConsistentIdentification,
-                CriteriaDatabase.CriteriaConstants.Description.ConsistentIdentification);
+                CriteriaDatabase.CriteriaConstants.Description.ConsistentIdentification,
+                CriteriaDatabase.CriteriaConstants.Solution.ConsistentIdentification);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

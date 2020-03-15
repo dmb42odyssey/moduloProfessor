@@ -10,7 +10,8 @@ public class Interruptions extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.Interruptions,
                 CriteriaDatabase.CriteriaConstants.Name.Interruptions,
-                CriteriaDatabase.CriteriaConstants.Description.Interruptions);
+                CriteriaDatabase.CriteriaConstants.Description.Interruptions,
+                CriteriaDatabase.CriteriaConstants.Solution.Interruptions);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

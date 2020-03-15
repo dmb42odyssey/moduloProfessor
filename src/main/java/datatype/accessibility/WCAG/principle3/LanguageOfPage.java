@@ -11,7 +11,8 @@ public class LanguageOfPage extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.LanguageOfPage,
                 CriteriaDatabase.CriteriaConstants.Name.LanguageOfPage,
-                CriteriaDatabase.CriteriaConstants.Description.LanguageOfPage);
+                CriteriaDatabase.CriteriaConstants.Description.LanguageOfPage,
+                CriteriaDatabase.CriteriaConstants.Solution.LanguageOfPage);
         super.conformanceLevel = ConformanceLevel.A;
     }
 

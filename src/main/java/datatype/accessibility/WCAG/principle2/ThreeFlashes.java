@@ -10,7 +10,8 @@ public class ThreeFlashes extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.ThreeFlashes,
                 CriteriaDatabase.CriteriaConstants.Name.ThreeFlashes,
-                CriteriaDatabase.CriteriaConstants.Description.ThreeFlashes);
+                CriteriaDatabase.CriteriaConstants.Description.ThreeFlashes,
+                CriteriaDatabase.CriteriaConstants.Solution.ThreeFlashes);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

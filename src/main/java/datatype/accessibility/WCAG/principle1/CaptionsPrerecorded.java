@@ -11,7 +11,8 @@ public class CaptionsPrerecorded extends AbstractCriteria {
     {
         super(CriteriaDatabase.CriteriaConstants.ID.CaptionsPreRecorded,
                 CriteriaDatabase.CriteriaConstants.Name.CaptionsPreRecorded,
-                CriteriaDatabase.CriteriaConstants.Description.CaptionsPreRecorded);
+                CriteriaDatabase.CriteriaConstants.Description.CaptionsPreRecorded,
+                CriteriaDatabase.CriteriaConstants.Solution.CaptionsPreRecorded );
         super.conformanceLevel = ConformanceLevel.A;
     }
     /* TRUE: has captions

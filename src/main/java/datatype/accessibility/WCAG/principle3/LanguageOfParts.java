@@ -10,7 +10,8 @@ public class LanguageOfParts extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.LanguageOfParts,
                 CriteriaDatabase.CriteriaConstants.Name.LanguageOfParts,
-                CriteriaDatabase.CriteriaConstants.Description.LanguageOfParts);
+                CriteriaDatabase.CriteriaConstants.Description.LanguageOfParts,
+                CriteriaDatabase.CriteriaConstants.Solution.LanguageOfParts);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

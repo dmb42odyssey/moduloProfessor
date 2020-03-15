@@ -10,7 +10,8 @@ public class UseOfColor extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.UseOfColor,
                 CriteriaDatabase.CriteriaConstants.Name.UseOfColor,
-                CriteriaDatabase.CriteriaConstants.Description.UseOfColor);
+                CriteriaDatabase.CriteriaConstants.Description.UseOfColor,
+                CriteriaDatabase.CriteriaConstants.Solution.UseOfColor);
         super.conformanceLevel = ConformanceLevel.A;
     }
 

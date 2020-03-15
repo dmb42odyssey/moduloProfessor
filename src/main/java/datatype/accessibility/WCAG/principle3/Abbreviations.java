@@ -10,7 +10,8 @@ public class Abbreviations extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.Abbreviations,
                 CriteriaDatabase.CriteriaConstants.Name.Abbreviations,
-                CriteriaDatabase.CriteriaConstants.Description.Abbreviations);
+                CriteriaDatabase.CriteriaConstants.Description.Abbreviations,
+                CriteriaDatabase.CriteriaConstants.Solution.Abbreviations);
         super.conformanceLevel = ConformanceLevel.AAA;
 
     }

@@ -10,7 +10,8 @@ public class Location extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.Location,
                 CriteriaDatabase.CriteriaConstants.Name.Location,
-                CriteriaDatabase.CriteriaConstants.Description.Location);
+                CriteriaDatabase.CriteriaConstants.Description.Location,
+                CriteriaDatabase.CriteriaConstants.Solution.Location);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

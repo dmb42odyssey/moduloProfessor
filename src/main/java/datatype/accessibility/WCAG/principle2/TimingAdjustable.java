@@ -10,7 +10,8 @@ public class TimingAdjustable extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.TimingAdjustable,
                 CriteriaDatabase.CriteriaConstants.Name.TimingAdjustable,
-                CriteriaDatabase.CriteriaConstants.Description.TimingAdjustable);
+                CriteriaDatabase.CriteriaConstants.Description.TimingAdjustable,
+                CriteriaDatabase.CriteriaConstants.Solution.TimingAdjustable);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

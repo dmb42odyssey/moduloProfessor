@@ -10,7 +10,8 @@ public class Help extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.Help,
                 CriteriaDatabase.CriteriaConstants.Name.Help,
-                CriteriaDatabase.CriteriaConstants.Description.Help);
+                CriteriaDatabase.CriteriaConstants.Description.Help,
+                CriteriaDatabase.CriteriaConstants.Solution.Help);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 

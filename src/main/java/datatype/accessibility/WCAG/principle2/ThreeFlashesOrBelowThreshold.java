@@ -10,7 +10,8 @@ public class ThreeFlashesOrBelowThreshold extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.ThreeFlashesOrBelowThreshold,
                 CriteriaDatabase.CriteriaConstants.Name.ThreeFlashesOrBelowThreshold,
-                CriteriaDatabase.CriteriaConstants.Description.ThreeFlashesOrBelowThreshold);
+                CriteriaDatabase.CriteriaConstants.Description.ThreeFlashesOrBelowThreshold,
+                CriteriaDatabase.CriteriaConstants.Solution.ThreeFlashesOrBelowThreshold);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

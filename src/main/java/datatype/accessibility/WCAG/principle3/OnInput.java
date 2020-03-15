@@ -10,7 +10,8 @@ public class OnInput extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.OnInput,
                 CriteriaDatabase.CriteriaConstants.Name.OnInput,
-                CriteriaDatabase.CriteriaConstants.Description.OnInput);
+                CriteriaDatabase.CriteriaConstants.Description.OnInput,
+                CriteriaDatabase.CriteriaConstants.Solution.OnInput);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

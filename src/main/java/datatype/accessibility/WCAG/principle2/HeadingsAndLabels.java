@@ -10,7 +10,8 @@ public class HeadingsAndLabels extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.HeadingsAndLabels,
                 CriteriaDatabase.CriteriaConstants.Name.HeadingsAndLabels,
-                CriteriaDatabase.CriteriaConstants.Description.HeadingsAndLabels);
+                CriteriaDatabase.CriteriaConstants.Description.HeadingsAndLabels,
+                CriteriaDatabase.CriteriaConstants.Solution.HeadingsAndLabels);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

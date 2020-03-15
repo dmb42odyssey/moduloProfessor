@@ -11,7 +11,8 @@ public class AudioOnlyLive extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.AudioOnlyLive,
                 CriteriaDatabase.CriteriaConstants.Name.AudioOnlyLive,
-                CriteriaDatabase.CriteriaConstants.Description.AudioOnlyLive);
+                CriteriaDatabase.CriteriaConstants.Description.AudioOnlyLive,
+                CriteriaDatabase.CriteriaConstants.Solution.AudioOnlyLive );
         super.conformanceLevel = ConformanceLevel.AAA;
         // Live content is not possible in PDF
         super.setIsApplicable(false);

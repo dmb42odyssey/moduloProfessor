@@ -10,7 +10,9 @@ public class AudioControl extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.AudioControl,
                 CriteriaDatabase.CriteriaConstants.Name.AudioControl,
-                CriteriaDatabase.CriteriaConstants.Description.AudioControl);
+                CriteriaDatabase.CriteriaConstants.Description.AudioControl,
+                CriteriaDatabase.CriteriaConstants.Solution.AudioControl
+                );
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

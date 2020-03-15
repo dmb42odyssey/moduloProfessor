@@ -11,7 +11,8 @@ public class SensoryCharacteristics extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.SensoryCharacteristics,
                 CriteriaDatabase.CriteriaConstants.Name.SensoryCharacteristics,
-                CriteriaDatabase.CriteriaConstants.Description.SensoryCharacteristics);
+                CriteriaDatabase.CriteriaConstants.Description.SensoryCharacteristics,
+                CriteriaDatabase.CriteriaConstants.Solution.SensoryCharacteristics );
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

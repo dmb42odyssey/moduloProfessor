@@ -10,7 +10,8 @@ public class ReAuthenticating extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.ReAuthenticating,
                 CriteriaDatabase.CriteriaConstants.Name.ReAuthenticating,
-                CriteriaDatabase.CriteriaConstants.Description.ReAuthenticating);
+                CriteriaDatabase.CriteriaConstants.Description.ReAuthenticating,
+                CriteriaDatabase.CriteriaConstants.Solution.ReAuthenticating);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }

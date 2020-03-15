@@ -12,7 +12,8 @@ public class MediaAlternative extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.MediaAlternative,
                 CriteriaDatabase.CriteriaConstants.Name.MediaAlternative,
-                CriteriaDatabase.CriteriaConstants.Description.MediaAlternative);
+                CriteriaDatabase.CriteriaConstants.Description.MediaAlternative,
+                CriteriaDatabase.CriteriaConstants.Solution.MediaAlternative );
         super.conformanceLevel = ConformanceLevel.AAA;
     }
     /* VIDEO ONLY

@@ -15,7 +15,8 @@ public class PageTitled extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.PageTitled,
                 CriteriaDatabase.CriteriaConstants.Name.PageTitled,
-                CriteriaDatabase.CriteriaConstants.Description.PageTitled);
+                CriteriaDatabase.CriteriaConstants.Description.PageTitled,
+                CriteriaDatabase.CriteriaConstants.Solution.PageTitled);
         super.conformanceLevel = ConformanceLevel.A;
     }
 

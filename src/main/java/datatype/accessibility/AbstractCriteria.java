@@ -23,11 +23,12 @@ public abstract class AbstractCriteria {
     protected boolean isApplicable;
     protected boolean isSufficient;
 
-    public AbstractCriteria(String id, String name, String description)
+    public AbstractCriteria(String id, String name, String description, String solutionText)
     {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.solutionText = solutionText;
         situation = new ArrayList<>();
         situation.add("A");
         currentConformanceLevel = null;

@@ -12,7 +12,8 @@ public class AudioDescription extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.AudioDescription,
                 CriteriaDatabase.CriteriaConstants.Name.AudioDescription,
-                CriteriaDatabase.CriteriaConstants.Description.AudioDescription);
+                CriteriaDatabase.CriteriaConstants.Description.AudioDescription,
+                CriteriaDatabase.CriteriaConstants.Solution.AudioDescription);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 

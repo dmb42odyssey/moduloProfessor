@@ -10,7 +10,8 @@ public class FocusOrder extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.FocusOrder,
                 CriteriaDatabase.CriteriaConstants.Name.FocusOrder,
-                CriteriaDatabase.CriteriaConstants.Description.FocusOrder);
+                CriteriaDatabase.CriteriaConstants.Description.FocusOrder,
+                CriteriaDatabase.CriteriaConstants.Solution.FocusOrder );
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

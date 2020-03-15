@@ -11,7 +11,8 @@ public class CaptionsLive extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.CaptionsLive,
                 CriteriaDatabase.CriteriaConstants.Name.CaptionsLive,
-                CriteriaDatabase.CriteriaConstants.Description.CaptionsLive);
+                CriteriaDatabase.CriteriaConstants.Description.CaptionsLive,
+                CriteriaDatabase.CriteriaConstants.Solution.CaptionsLive );
         super.conformanceLevel = ConformanceLevel.AA;
         // Live content is not possible in PDF
         super.setIsApplicable(false);

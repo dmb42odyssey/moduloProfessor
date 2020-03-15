@@ -10,7 +10,8 @@ public class ErrorIdentification extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.ErrorIdentification,
                 CriteriaDatabase.CriteriaConstants.Name.ErrorIdentification,
-                CriteriaDatabase.CriteriaConstants.Description.ErrorIdentification);
+                CriteriaDatabase.CriteriaConstants.Description.ErrorIdentification,
+                CriteriaDatabase.CriteriaConstants.Solution.ErrorIdentification);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

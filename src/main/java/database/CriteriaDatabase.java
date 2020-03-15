@@ -82,6 +82,9 @@ public class CriteriaDatabase {
 
     public static class CriteriaConstants {
 
+        /*
+         *  Not used for display in the results.
+         */
         public static class ID
         {
             public static final String NonTextContent = "Non-text Content";
@@ -182,7 +185,7 @@ public class CriteriaDatabase {
             public static final String ThreeFlashesOrBelowThreshold = "Três Flashes ou Abaixo do Limite";
             public static final String ThreeFlashes = "Três Flashes";
             public static final String BypassBlocks = "Ignorar Blocos";
-            public static final String PageTitled = "Página com Título";
+            public static final String PageTitled = "Documento com Título";
             public static final String FocusOrder = "Ordem do Foco";
             public static final String LinkPurposeInContext = "Finalidade do Link (Em Contexto)";
             public static final String MultipleWays = "Várias Formas";
@@ -191,7 +194,7 @@ public class CriteriaDatabase {
             public static final String Location = "Localização";
             public static final String LinkPurposeLinkOnly = "Finalidade do Link (Apenas o Link)";
             public static final String SectionHeadings = "Cabeçalhos da sessão";
-            public static final String LanguageOfPage = "Idioma da Página";
+            public static final String LanguageOfPage = "Idioma do documento";
             public static final String LanguageOfParts ="Idioma das Partes";
             public static final String UnusualWords = "Palavras Incomuns";
             public static final String Abbreviations = "Abreviaturas";
@@ -283,7 +286,7 @@ public class CriteriaDatabase {
             public static final String ThreeFlashesOrBelowThreshold = "As páginas web não incluem nenhum conteúdo que pisque mais de três vezes no período de um segundo, ou o flash encontra-se abaixo dos limites de flash universal e flash vermelho. ";
             public static final String ThreeFlashes = "As páginas web não incluem qualquer conteúdo que pisca mais de três vezes no período de um segundo.";
             public static final String BypassBlocks = "Um mecanismo está disponível para ignorar blocos de conteúdo que são repetidos em várias páginas web";
-            public static final String PageTitled = "As páginas web têm títulos que descrevem o tópico ou a finalidade";
+            public static final String PageTitled = "O documento tem título que descreve o tópico ou a finalidade";
             public static final String FocusOrder = "Se uma página web puder ser navegada de forma sequencial e as sequências de navegação afetarem o significado ou a operação, os componentes que podem ser focados recebem o foco em uma ordem que preserva o significado e a operabilidade.";
             public static final String LinkPurposeInContext = "A finalidade de cada link pode ser determinada a partir do link sozinho ou a partir do texto do link em conjunto com seu respectivo contexto do link determinado por meio de código de programação, exceto quando a finalidade do link for ambígua para os usuários em geral";
             public static final String MultipleWays = "Está disponível mais de uma forma para localizar uma página web em um conjunto de páginas web, exceto quando a Página Web for o resultado, ou uma etapa, de um processo.";
@@ -292,7 +295,7 @@ public class CriteriaDatabase {
             public static final String Location = "Informação sobre a localização do usuário está disponível em um conjunto de páginas web";
             public static final String LinkPurposeLinkOnly = "Um mecanismo está disponível para permitir que a finalidade de cada link seja identificada a partir apenas do texto do link, exceto quando a sua finalidade for ambígua para os usuários em geral. ";
             public static final String SectionHeadings = "Os cabeçalhos da seção são utilizados para organizar o conteúdo.";
-            public static final String LanguageOfPage = "O idioma humano pré-definido de cada página web pode ser determinado por meio de código de programação.";
+            public static final String LanguageOfPage = "O idioma humano pré-definido do documento ode ser determinado por meio de código de programação.";
             public static final String LanguageOfParts ="O idioma de cada passagem ou frase no conteúdo pode ser determinado por meio de código de programação, exceto para nomes próprios, termos técnicos, palavras de idioma indeterminado e palavras ou frases que se tornaram parte do vernáculo do texto que as envolve.";
             public static final String UnusualWords = "Um mecanismo para identificar definições específicas de palavras ou expressões utilizadas de uma forma restrita e incomum está disponível, incluindo expressões idiomáticas e jargões.";
             public static final String Abbreviations = "Está disponível um mecanismo para identificar a forma expandida ou o significado das abreviaturas.";
@@ -327,9 +330,68 @@ public class CriteriaDatabase {
 
         public static class Solution
         {
-            public static final String PageTitled = "ão foi possível detectar o título do documento. Certifique-se que o a entrada /Title foi preenchida. Mais informações em https://www.w3.org/WAI/WCAG21/Techniques/pdf/PDF18.html";
+            public static final String NonTextContent = "";
+            public static final String AudioOnlyVideoOnly = "";
+            public static final String CaptionsPreRecorded = "";
+            public static final String AudioDescriptionMediaAlternative = "";
+            public static final String CaptionsLive = "";
+            public static final String AudioDescription = "";
+            public static final String SignLanguage = "";
+            public static final String ExtendedAudioDescription = "";
+            public static final String MediaAlternative = "";
+            public static final String AudioOnlyLive= "";
+            public static final String InfoRelationship = "";
+            public static final String MeaningfulSequence = "";
+            public static final String SensoryCharacteristics = "";
+            public static final String UseOfColor = "";
+            public static final String AudioControl= "";
+            public static final String ContrastMinimum = "";
+            public static final String ResizeText = "";
+            public static final String ImagesOfText = "";
+            public static final String ContrastEnchanced = "";
+            public static final String LowOrNoBackgroundAudio = "";
+            public static final String VisualPresentation = "";
+            public static final String ImageOfTextNoException = "";
+            public static final String Keyboard= "";
+            public static final String NoKeyboardTrap = "";
+            public static final String KeyboardNoException = "";
+            public static final String TimingAdjustable= "";
+            public static final String PauseStopHide = "";
+            public static final String NoTiming = "";
+            public static final String Interruptions = "";
+            public static final String ReAuthenticating = "";
+            public static final String ThreeFlashesOrBelowThreshold = "";
+            public static final String ThreeFlashes = "";
+            public static final String BypassBlocks = "";
+            public static final String PageTitled = "Não foi possível detectar o título do documento. Certifique-se que" + " a entrada /Title foi preenchida. Mais informações em https://www.w3.org/WAI/WCAG21/Techniques/pdf/PDF18.html";
+            public static final String FocusOrder = "";
+            public static final String LinkPurposeInContext = "";
+            public static final String MultipleWays = "";
+            public static final String HeadingsAndLabels = "";
+            public static final String FocusVisible = "";
+            public static final String Location = "";
+            public static final String LinkPurposeLinkOnly = "";
+            public static final String SectionHeadings = "";
             public static final String LanguageOfPage = "Não foi possível detectar o idioma padrão do documento. Certifique-se que o a entrada /Lang foi preenchida. " +
                     "Mais informações em https://www.w3.org/TR/WCAG20-TECHS/PDF16.html";
+            public static final String LanguageOfParts ="";
+            public static final String UnusualWords = "";
+            public static final String Abbreviations = "";
+            public static final String ReadingLevel = "";
+            public static final String Pronunciation= "";
+            public static final String OnFocus = "";
+            public static final String OnInput = "";
+            public static final String ConsistentNavigation = "";
+            public static final String ConsistentIdentification = "";
+            public static final String ChangeOnRequest = "";
+            public static final String ErrorIdentification = "";
+            public static final String LabelsOrInstructions = "";
+            public static final String ErrorSuggestion = "";
+            public static final String ErrorPrevention = "";
+            public static final String Help = "";
+            public static final String ErrorPreventionAll = "";
+            public static final String Parsing = "";
+            public static final String NameRoleValue = "";
         }
     }
 

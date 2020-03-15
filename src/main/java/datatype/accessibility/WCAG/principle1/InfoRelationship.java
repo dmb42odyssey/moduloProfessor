@@ -10,7 +10,8 @@ public class InfoRelationship extends AbstractCriteria {
     {
         super(CriteriaDatabase.CriteriaConstants.ID.InfoRelationship,
                 CriteriaDatabase.CriteriaConstants.Name.InfoRelationship,
-                CriteriaDatabase.CriteriaConstants.Description.InfoRelationship);
+                CriteriaDatabase.CriteriaConstants.Description.InfoRelationship,
+                CriteriaDatabase.CriteriaConstants.Solution.InfoRelationship );
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

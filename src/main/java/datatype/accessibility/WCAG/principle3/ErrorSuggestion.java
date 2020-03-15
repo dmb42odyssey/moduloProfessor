@@ -10,7 +10,8 @@ public class ErrorSuggestion extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.ErrorSuggestion,
                 CriteriaDatabase.CriteriaConstants.Name.ErrorSuggestion,
-                CriteriaDatabase.CriteriaConstants.Description.ErrorSuggestion);
+                CriteriaDatabase.CriteriaConstants.Description.ErrorSuggestion,
+                CriteriaDatabase.CriteriaConstants.Solution.ErrorSuggestion);
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

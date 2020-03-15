@@ -10,7 +10,8 @@ public class ResizeText extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.ResizeText,
                 CriteriaDatabase.CriteriaConstants.Name.ResizeText,
-                CriteriaDatabase.CriteriaConstants.Description.ResizeText);
+                CriteriaDatabase.CriteriaConstants.Description.ResizeText,
+                CriteriaDatabase.CriteriaConstants.Solution.ResizeText );
         super.conformanceLevel = ConformanceLevel.AA;
     }
 }

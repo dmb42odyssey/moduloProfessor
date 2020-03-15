@@ -11,7 +11,8 @@ public class NonTextContext extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.NonTextContent,
               CriteriaDatabase.CriteriaConstants.Name.NonTextContent,
-              CriteriaDatabase.CriteriaConstants.Description.NonTextContent);
+              CriteriaDatabase.CriteriaConstants.Description.NonTextContent,
+              CriteriaDatabase.CriteriaConstants.Solution.NonTextContent);
         super.conformanceLevel = ConformanceLevel.A;
     }
 }

@@ -10,7 +10,8 @@ public class NoTiming extends AbstractCriteria
     {
         super(CriteriaDatabase.CriteriaConstants.ID.NoTiming,
                 CriteriaDatabase.CriteriaConstants.Name.NoTiming,
-                CriteriaDatabase.CriteriaConstants.Description.NoTiming);
+                CriteriaDatabase.CriteriaConstants.Description.NoTiming,
+                CriteriaDatabase.CriteriaConstants.Solution.NoTiming);
         super.conformanceLevel = ConformanceLevel.AAA;
     }
 }
