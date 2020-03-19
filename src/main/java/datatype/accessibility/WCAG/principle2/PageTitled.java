@@ -19,16 +19,4 @@ public class PageTitled extends AbstractCriteria
                 CriteriaDatabase.CriteriaConstants.Solution.PageTitled);
         super.conformanceLevel = ConformanceLevel.A;
     }
-
-    public void testSufficience(PDDocumentInformation documentInformation)
-    {
-        if(documentInformation.getTitle() != null)
-        {
-            setCurrentConformanceLevel(getConformanceLevel());
-        }
-        else
-        {
-            setCurrentConformanceLevel(null);
-        }
-    }
 }

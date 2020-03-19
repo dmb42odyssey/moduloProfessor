@@ -161,12 +161,6 @@ public class Extractor extends PDFTextStripper
         pageWidth = pdPage.getMediaBox().getUpperRightX();
         pageHeight = pdPage.getMediaBox().getUpperRightY();
 
-        for(PDAnnotation annotation : pdPage.getAnnotations())
-        {
-             System.out.println(annotation.getAnnotationName());
-             System.out.println("Annotation: " + annotation.getContents());
-        }
-
         // flip y-axis
         flipAT = new AffineTransform();
         flipAT.translate(0, pdPage.getBBox().getHeight());

@@ -40,9 +40,6 @@ public class App {
             abstractPrincipleList = analyzer.analyzeDocument();
             ResultSupplier resultSupplier = new ResultSupplier(abstractPrincipleList, analyzer.getOverallConformance());
             System.out.print(resultSupplier.formatedHTMLresult());
-            //resultSupplier.printAllSuccessful();
-            //resultSupplier.printAllFailed();
-            //resultSupplier.printConformanceLevel();
         }
     }
 

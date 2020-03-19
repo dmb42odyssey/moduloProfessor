@@ -13,16 +13,7 @@ import datatype.accessibility.check.CheckAgent;
 import datatype.accessibility.check.CriteriaCheckFactory;
 import datatype.accessibility.check.ICriteriaCheck;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDStructureElementNameTreeNode;
-import org.apache.pdfbox.pdmodel.common.PDNameTreeNode;
-import org.apache.pdfbox.pdmodel.documentinterchange.logicalstructure.PDStructureElement;
-import org.apache.pdfbox.pdmodel.documentinterchange.logicalstructure.PDStructureTreeRoot;
 
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 
@@ -83,7 +74,7 @@ public class Analyzer {
                     }
                     else
                     {
-                        criteria.setIsSufficient(true);
+                        criteria.setIsApplicable(false);
                     }
                 }
             }
@@ -96,12 +87,18 @@ public class Analyzer {
     {
         List<AbstractCriteria> criteriaList = new ArrayList<AbstractCriteria>();
 
-        /* Create a list with criteria only */
+        /* Create a list with applicable criteria only */
         for(AbstractPrinciple principle : principleList)
         {
             for(AbstractGuideline guideline :principle.getGuidelineMap())
             {
-                criteriaList.addAll(guideline.getCriteriaList());
+                for(AbstractCriteria criteria : guideline.getCriteriaList())
+                {
+                    if(criteria.getIsApplicable())
+                    {
+                        criteriaList.add(criteria);
+                    }
+                }
             }
         }
 
@@ -115,13 +112,14 @@ public class Analyzer {
 
         /* Finally, get the document's conformance level, by comparing the criteria's conformance level
            with the obtained (current) conformance.*/
-        ConformanceLevel finalConformanceLevel = ConformanceLevel.AAA;
+        ConformanceLevel finalConformanceLevel = criteriaList.get(criteriaList.size() - 1).getConformanceLevel();
 
         for(AbstractCriteria criteria : criteriaList)
         {
             if(criteria.getConformanceLevel() != criteria.getCurrentConformanceLevel())
             {
-                /* Final conformance level is criteria's conformance lowered by a conformance level.
+                /*
+                 * Final conformance level is criteria's conformance lowered by a conformance level.
                  */
                 finalConformanceLevel = criteria.getConformanceLevel().lowerConformance(criteria.getConformanceLevel());
                 break;

@@ -295,7 +295,7 @@ public class CriteriaDatabase {
             public static final String Location = "Informação sobre a localização do usuário está disponível em um conjunto de páginas web";
             public static final String LinkPurposeLinkOnly = "Um mecanismo está disponível para permitir que a finalidade de cada link seja identificada a partir apenas do texto do link, exceto quando a sua finalidade for ambígua para os usuários em geral. ";
             public static final String SectionHeadings = "Os cabeçalhos da seção são utilizados para organizar o conteúdo.";
-            public static final String LanguageOfPage = "O idioma humano pré-definido do documento ode ser determinado por meio de código de programação.";
+            public static final String LanguageOfPage = "O idioma humano pré-definido do documento pode ser determinado por meio de código de programação.";
             public static final String LanguageOfParts ="O idioma de cada passagem ou frase no conteúdo pode ser determinado por meio de código de programação, exceto para nomes próprios, termos técnicos, palavras de idioma indeterminado e palavras ou frases que se tornaram parte do vernáculo do texto que as envolve.";
             public static final String UnusualWords = "Um mecanismo para identificar definições específicas de palavras ou expressões utilizadas de uma forma restrita e incomum está disponível, incluindo expressões idiomáticas e jargões.";
             public static final String Abbreviations = "Está disponível um mecanismo para identificar a forma expandida ou o significado das abreviaturas.";
@@ -363,7 +363,7 @@ public class CriteriaDatabase {
             public static final String ThreeFlashesOrBelowThreshold = "";
             public static final String ThreeFlashes = "";
             public static final String BypassBlocks = "";
-            public static final String PageTitled = "Não foi possível detectar o título do documento. Certifique-se que" + " a entrada /Title foi preenchida. Mais informações em https://www.w3.org/WAI/WCAG21/Techniques/pdf/PDF18.html";
+            public static final String PageTitled = "Não foi possível detectar o título do documento. Certifique-se que" + " o campo /Title foi preenchido. Mais informações em https://www.w3.org/WAI/WCAG21/Techniques/pdf/PDF18.html";
             public static final String FocusOrder = "";
             public static final String LinkPurposeInContext = "";
             public static final String MultipleWays = "";
@@ -372,7 +372,7 @@ public class CriteriaDatabase {
             public static final String Location = "";
             public static final String LinkPurposeLinkOnly = "";
             public static final String SectionHeadings = "";
-            public static final String LanguageOfPage = "Não foi possível detectar o idioma padrão do documento. Certifique-se que o a entrada /Lang foi preenchida. " +
+            public static final String LanguageOfPage = "Não foi possível detectar o idioma padrão do documento. Certifique-se que o campo /Lang foi preenchido. " +
                     "Mais informações em https://www.w3.org/TR/WCAG20-TECHS/PDF16.html";
             public static final String LanguageOfParts ="";
             public static final String UnusualWords = "";

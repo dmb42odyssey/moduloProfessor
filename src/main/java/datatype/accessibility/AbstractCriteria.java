@@ -21,7 +21,6 @@ public abstract class AbstractCriteria {
     protected ConformanceLevel conformanceLevel;
     protected ConformanceLevel currentConformanceLevel;
     protected boolean isApplicable;
-    protected boolean isSufficient;
 
     public AbstractCriteria(String id, String name, String description, String solutionText)
     {
@@ -45,7 +44,10 @@ public abstract class AbstractCriteria {
     public ConformanceLevel getCurrentConformanceLevel() { return currentConformanceLevel; }
     public void setIsApplicable(boolean isApplicable) { this.isApplicable = isApplicable; }
     public boolean getIsApplicable() { return isApplicable; }
-    public void setIsSufficient(boolean isSufficient) { this.isSufficient = isSufficient; }
-    public boolean getIsSufficient() { return isSufficient; }
     public String getSolutionText() { return solutionText; }
+
+    public boolean isSufficient()
+    {
+        return conformanceLevel == currentConformanceLevel;
+    }
 }

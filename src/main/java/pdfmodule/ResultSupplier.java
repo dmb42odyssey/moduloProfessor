@@ -54,7 +54,7 @@ public class ResultSupplier
             {
                 for(AbstractCriteria criteria: guideline.getCriteriaList())
                 {
-                    if(criteria.getIsApplicable() && criteria.getIsSufficient())
+                    if(criteria.getIsApplicable() && criteria.isSufficient())
                     {
                         successList.add(criteria);
                     }
@@ -76,7 +76,7 @@ public class ResultSupplier
             {
                 for(AbstractCriteria criteria: guideline.getCriteriaList())
                 {
-                    if(criteria.getIsApplicable() && !criteria.getIsSufficient())
+                    if(criteria.getIsApplicable() && !criteria.isSufficient())
                     {
                         faiList.add(criteria);
                     }

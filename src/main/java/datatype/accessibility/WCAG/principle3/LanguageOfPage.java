@@ -15,17 +15,4 @@ public class LanguageOfPage extends AbstractCriteria
                 CriteriaDatabase.CriteriaConstants.Solution.LanguageOfPage);
         super.conformanceLevel = ConformanceLevel.A;
     }
-
-    public void testSufficience(PDDocumentCatalog documentCatalog)
-    {
-
-        if(documentCatalog.getLanguage() != null)
-        {
-            setCurrentConformanceLevel(getConformanceLevel());
-        }
-        else
-        {
-            setCurrentConformanceLevel(null);
-        }
-    }
 }
