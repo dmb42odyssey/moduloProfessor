@@ -1,6 +1,6 @@
 package database;
 
-import datatype.accessibility.AbstractCriteria;
+import datatype.accessibility.Criteria;
 import datatype.accessibility.AbstractGuideline;
 import datatype.accessibility.AbstractPrinciple;
 
@@ -14,6 +14,10 @@ public class SetupParameters {
 
     public SetupParameters()
     {
+
+        // Building Dictionares
+
+
         // WCAG 2.0
         ValidPrincipleList = buildPrincipleList();
         principleToGuidelines = buildPrincipleToGuidelinesMap();
@@ -34,7 +38,7 @@ public class SetupParameters {
 
                 for(String criteria : guideLineToCriterias.get(guideline))
                 {
-                    AbstractCriteria newCriteria = CriteriaDatabase.CriteriaInitialization(criteria);
+                    Criteria newCriteria = CriteriaFactory.WCAG.getCriteria(criteria);
                     newGuideline.getCriteriaList().add(newCriteria);
                 }
 
@@ -92,22 +96,13 @@ public class SetupParameters {
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.TimeBasedMedia, Arrays.asList(
                 CriteriaDatabase.CriteriaConstants.ID.AudioOnlyVideoOnly,
                 CriteriaDatabase.CriteriaConstants.ID.CaptionsPreRecorded,
-                CriteriaDatabase.CriteriaConstants.ID.AudioDescriptionMediaAlternative,
-                CriteriaDatabase.CriteriaConstants.ID.CaptionsLive,
-                CriteriaDatabase.CriteriaConstants.ID.AudioDescription,
-                CriteriaDatabase.CriteriaConstants.ID.SignLanguage,
-                CriteriaDatabase.CriteriaConstants.ID.ExtendedAudioDescription,
-                CriteriaDatabase.CriteriaConstants.ID.MediaAlternative,
-                CriteriaDatabase.CriteriaConstants.ID.AudioOnlyLive
+                CriteriaDatabase.CriteriaConstants.ID.AudioDescription
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Adaptable, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ID.InfoRelationship,
-                CriteriaDatabase.CriteriaConstants.ID.MeaningfulSequence,
-                CriteriaDatabase.CriteriaConstants.ID.SensoryCharacteristics
+                CriteriaDatabase.CriteriaConstants.ID.MeaningfulSequence
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Distinguishable, Arrays.asList(
                 CriteriaDatabase.CriteriaConstants.ID.UseOfColor,
-                CriteriaDatabase.CriteriaConstants.ID.AudioControl,
                 CriteriaDatabase.CriteriaConstants.ID.ContrastMinimum,
                 CriteriaDatabase.CriteriaConstants.ID.ResizeText,
                 CriteriaDatabase.CriteriaConstants.ID.ImagesOfText,
@@ -117,30 +112,19 @@ public class SetupParameters {
                 CriteriaDatabase.CriteriaConstants.ID.ImageOfTextNoException
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.KeyboardAccessible, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ID.Keyboard,
-                CriteriaDatabase.CriteriaConstants.ID.NoKeyboardTrap,
                 CriteriaDatabase.CriteriaConstants.ID.KeyboardNoException
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.EnoughTime, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ID.TimingAdjustable,
                 CriteriaDatabase.CriteriaConstants.ID.PauseStopHide,
-                CriteriaDatabase.CriteriaConstants.ID.NoTiming,
-                CriteriaDatabase.CriteriaConstants.ID.Interruptions,
-                CriteriaDatabase.CriteriaConstants.ID.ReAuthenticating
+                CriteriaDatabase.CriteriaConstants.ID.NoTiming
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Seizures, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ID.ThreeFlashesOrBelowThreshold ,
                 CriteriaDatabase.CriteriaConstants.ID.ThreeFlashes
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Navigable, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ID.BypassBlocks,
                 CriteriaDatabase.CriteriaConstants.ID.PageTitled,
-                CriteriaDatabase.CriteriaConstants.ID.FocusOrder,
                 CriteriaDatabase.CriteriaConstants.ID.LinkPurposeInContext,
-                CriteriaDatabase.CriteriaConstants.ID.MultipleWays,
                 CriteriaDatabase.CriteriaConstants.ID.HeadingsAndLabels,
-                CriteriaDatabase.CriteriaConstants.ID.FocusVisible,
-                CriteriaDatabase.CriteriaConstants.ID.Location,
                 CriteriaDatabase.CriteriaConstants.ID.LinkPurposeLinkOnly,
                 CriteriaDatabase.CriteriaConstants.ID.SectionHeadings
         ));
@@ -153,23 +137,12 @@ public class SetupParameters {
                 CriteriaDatabase.CriteriaConstants.ID.Pronunciation
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Predictable, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ID.OnFocus,
-                CriteriaDatabase.CriteriaConstants.ID.OnInput,
-                CriteriaDatabase.CriteriaConstants.ID.ConsistentNavigation,
-                CriteriaDatabase.CriteriaConstants.ID.ConsistentIdentification,
                 CriteriaDatabase.CriteriaConstants.ID.ChangeOnRequest
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.InputAssistance, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ID.ErrorIdentification,
-                CriteriaDatabase.CriteriaConstants.ID.LabelsOrInstructions,
-                CriteriaDatabase.CriteriaConstants.ID.ErrorSuggestion,
-                CriteriaDatabase.CriteriaConstants.ID.ErrorPrevention ,
-                CriteriaDatabase.CriteriaConstants.ID.Help ,
-                CriteriaDatabase.CriteriaConstants.ID.ErrorPreventionAll
+
         ));
         guideLineToCriteriasMap.put(GuidelineDatabase.GuidelineConstants.Compatible, Arrays.asList(
-                CriteriaDatabase.CriteriaConstants.ID.Parsing,
-                CriteriaDatabase.CriteriaConstants.ID.NameRoleValue
         ));
         return guideLineToCriteriasMap;
     }

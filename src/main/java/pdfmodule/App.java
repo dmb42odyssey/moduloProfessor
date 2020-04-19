@@ -27,7 +27,7 @@ public class App {
         String path = args[0];
         if(!FilenameUtils.getExtension(path).equals("pdf"))
         {
-            System.out.println("O arquivo passado não é um pdf. Abortando...");
+            System.out.println("<h2>O arquivo enviado não é um documento PDF.</h2>");
             return;
         }
 

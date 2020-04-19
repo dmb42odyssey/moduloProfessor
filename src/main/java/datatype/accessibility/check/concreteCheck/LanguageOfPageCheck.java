@@ -1,17 +1,17 @@
 package datatype.accessibility.check.concreteCheck;
 
-import datatype.accessibility.WCAG.principle3.LanguageOfPage;
+import datatype.accessibility.Criteria;
 import datatype.accessibility.check.ICriteriaCheck;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 public class LanguageOfPageCheck implements ICriteriaCheck
 {
-    private LanguageOfPage languageOfPage;
+    private Criteria criteria;
     private PDDocument document;
 
-    public LanguageOfPageCheck(LanguageOfPage languageOfPage, PDDocument document)
+    public LanguageOfPageCheck(Criteria criteria, PDDocument document)
     {
-        this.languageOfPage = languageOfPage;
+        this.criteria = criteria;
         this.document = document;
     }
 
@@ -20,11 +20,11 @@ public class LanguageOfPageCheck implements ICriteriaCheck
     {
         if(document.getDocumentCatalog().getLanguage() != null)
         {
-            languageOfPage.setCurrentConformanceLevel(languageOfPage.getConformanceLevel());
+            criteria.setCurrentConformanceLevel(criteria.getConformanceLevel());
         }
         else
         {
-            languageOfPage.setCurrentConformanceLevel(null);
+            criteria.setCurrentConformanceLevel(null);
         }
     }
 }

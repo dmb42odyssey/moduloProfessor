@@ -11,25 +11,23 @@ import java.util.List;
  * verification method which is a command class, due to difference
  * in needed parameters (text, image, etc).
  */
-public abstract class AbstractCriteria {
+public class Criteria {
 
     protected String id;
     protected String name;
     protected String description;
     protected String solutionText;
-    protected List<String> situation;
     protected ConformanceLevel conformanceLevel;
     protected ConformanceLevel currentConformanceLevel;
     protected boolean isApplicable;
 
-    public AbstractCriteria(String id, String name, String description, String solutionText)
+    public Criteria(String id, String name, String description, String solutionText, ConformanceLevel conformanceLevel)
     {
         this.id = id;
         this.name = name;
         this.description = description;
         this.solutionText = solutionText;
-        situation = new ArrayList<>();
-        situation.add("A");
+        this.conformanceLevel = conformanceLevel;
         currentConformanceLevel = null;
         setIsApplicable(CriteriaDatabase.isEnabled(this));
     }

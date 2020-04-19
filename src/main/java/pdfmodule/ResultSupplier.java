@@ -1,11 +1,10 @@
 package pdfmodule;
 
-import datatype.accessibility.AbstractCriteria;
+import datatype.accessibility.Criteria;
 import datatype.accessibility.AbstractGuideline;
 import datatype.accessibility.AbstractPrinciple;
 import datatype.accessibility.ConformanceLevel;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +15,8 @@ import java.util.List;
 public class ResultSupplier
 {
 
-    static List<AbstractCriteria> succeededCriteriaList;
-    static List<AbstractCriteria> failedCriteriaList;
+    static List<Criteria> succeededCriteriaList;
+    static List<Criteria> failedCriteriaList;
     static ConformanceLevel conformanceLevel;
 
     public ResultSupplier(List<AbstractPrinciple> abstractPrincipleList, ConformanceLevel conformanceLevel)
@@ -43,16 +42,16 @@ public class ResultSupplier
 
     }
 
-    private List<AbstractCriteria> getAllSuccessful(List<AbstractPrinciple> abstractPrincipleList)
+    private List<Criteria> getAllSuccessful(List<AbstractPrinciple> abstractPrincipleList)
     {
 
-        List<AbstractCriteria> successList = new ArrayList<>();
+        List<Criteria> successList = new ArrayList<>();
 
         for(AbstractPrinciple principle : abstractPrincipleList)
         {
             for(AbstractGuideline guideline :principle.getGuidelineMap())
             {
-                for(AbstractCriteria criteria: guideline.getCriteriaList())
+                for(Criteria criteria: guideline.getCriteriaList())
                 {
                     if(criteria.getIsApplicable() && criteria.isSufficient())
                     {
@@ -65,16 +64,16 @@ public class ResultSupplier
         return successList;
     }
 
-    private List<AbstractCriteria> getAllFailed(List<AbstractPrinciple> abstractPrincipleList)
+    private List<Criteria> getAllFailed(List<AbstractPrinciple> abstractPrincipleList)
     {
 
-        List<AbstractCriteria> faiList = new ArrayList<>();
+        List<Criteria> faiList = new ArrayList<>();
 
         for(AbstractPrinciple principle : abstractPrincipleList)
         {
             for(AbstractGuideline guideline :principle.getGuidelineMap())
             {
-                for(AbstractCriteria criteria: guideline.getCriteriaList())
+                for(Criteria criteria: guideline.getCriteriaList())
                 {
                     if(criteria.getIsApplicable() && !criteria.isSufficient())
                     {
@@ -90,7 +89,7 @@ public class ResultSupplier
     public void printAllSuccessful()
     {
         System.out.println("-- Critérios atendidos com sucesso: --");
-        for(AbstractCriteria criteria : succeededCriteriaList)
+        for(Criteria criteria : succeededCriteriaList)
         {
             printCriteria(criteria);
         }
@@ -99,14 +98,14 @@ public class ResultSupplier
     public void printAllFailed()
     {
         System.out.println("-- Critérios que não foram atendidos --");
-        for(AbstractCriteria criteria : failedCriteriaList)
+        for(Criteria criteria : failedCriteriaList)
         {
             printCriteria(criteria);
             System.out.println(criteria.getSolutionText());
         }
     }
 
-    private void printCriteria(AbstractCriteria criteria)
+    private void printCriteria(Criteria criteria)
     {
         System.out.println(criteria.getName());
         System.out.println(criteria.getDescription());
@@ -114,25 +113,44 @@ public class ResultSupplier
 
     public String formatedHTMLresult()
     {
-        String bodyHTML = "<h1> Resultado </h1>\n";
-        bodyHTML += ConformanceLevel() + "\n";
+        String bodyHTML = "<h1> Relatório </h1>\n";
+        bodyHTML += "<div id=\"relatorio\">" + "\n";
 
-        bodyHTML += "<h2>" + "Critérios atendidos:" + "</h2>" + "\n";
-
-        for(AbstractCriteria criteria : succeededCriteriaList)
+        if(succeededCriteriaList != null)
         {
-            bodyHTML += "<h3>" + criteria.getName() +  "</h3>"  + "\n";
-            bodyHTML += "<p>" + criteria.getDescription() + "</p>" + "\n";
+
+            bodyHTML += "<h2>" + "Critérios atendidos:" + "</h2>" + "\n";
+            bodyHTML += "<ul class=\"atendidos\">";
+
+            for(Criteria criteria : succeededCriteriaList)
+            {
+                bodyHTML += "<li><h3>" + criteria.getName() +  "</h3></li>"  + "\n";
+                bodyHTML += "<p>" + criteria.getDescription() + "</p>" + "\n";
+            }
+
+            bodyHTML += "</ul>";
+
         }
 
-        bodyHTML += "<h2>" + "Critérios não atendidos: " + "</h2>" + "\n";
-
-        for(AbstractCriteria criteria : failedCriteriaList)
+        if(failedCriteriaList != null)
         {
-            bodyHTML += "<h3>" + criteria.getName() + "</h3>" + "\n";
-            bodyHTML += "<p>" + criteria.getDescription() + "</p>" + "\n";
-            bodyHTML += "<p>" + "Solução:" + criteria.getSolutionText() + "</p>" + "\n";
+
+            bodyHTML += "<h2>" + "Critérios não atendidos: " + "</h2>" + "\n";
+            bodyHTML += "<ul class=\"nao_atendidos\">";
+
+            for(Criteria criteria : failedCriteriaList)
+            {
+                bodyHTML += "<li><h3>" + criteria.getName() +  "</h3></li>"  + "\n";
+                bodyHTML += "<p>" + criteria.getDescription() + "</p>" + "\n";
+                bodyHTML += "<p>" + "<b>Sugestão:</b>" + criteria.getSolutionText() + "</p>" + "\n";
+            }
+
+            bodyHTML += "</ul>";
+            bodyHTML += "</div>";
+
         }
+
+        bodyHTML += "<h4>Encontrou algum problema? Envie um email para <a href=\"mailto:lirte.ufabc@gmail.com?Subject=[ADD%20-%20AVALIADOR%20DE%20DOCUMENTOS%20DIGITAIS]\">lirte.ufabc@gmail.com</a>.</h4>";
 
         return bodyHTML;
     }

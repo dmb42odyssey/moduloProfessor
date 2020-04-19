@@ -15,7 +15,7 @@ public abstract class AbstractGuideline {
     protected String description;
     protected boolean isChecked;
     protected ConformanceLevel minimumPriorityStatus;
-    protected List<AbstractCriteria> criteriaList;
+    protected List<Criteria> criteriaList;
 
     protected AbstractGuideline()
     {
@@ -31,7 +31,7 @@ public abstract class AbstractGuideline {
     public String getDescription() { return description; }
     public void setCheckStatus(boolean checkStatus) { isChecked = checkStatus; }
     public boolean getCheckStatus() { return isChecked; }
-    public List<AbstractCriteria> getCriteriaList() { return criteriaList; }
+    public List<Criteria> getCriteriaList() { return criteriaList; }
 
     public abstract ConformanceLevel guidelineCheck();
     public abstract Text verificationMessage();

@@ -1,17 +1,17 @@
 package datatype.accessibility.check.concreteCheck;
 
-import datatype.accessibility.WCAG.principle2.PageTitled;
+import datatype.accessibility.Criteria;
 import datatype.accessibility.check.ICriteriaCheck;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 public class PageTitledCheck implements ICriteriaCheck
 {
-    PageTitled pageTitled;
-    PDDocument document;
+    private Criteria criteria;
+    private PDDocument document;
 
-    public PageTitledCheck(PageTitled pageTitled, PDDocument document)
+    public PageTitledCheck(Criteria criteria, PDDocument document)
     {
-        this.pageTitled = pageTitled;
+        this.criteria = criteria;
         this.document = document;
     }
 
@@ -20,11 +20,11 @@ public class PageTitledCheck implements ICriteriaCheck
     {
         if(document.getDocumentInformation().getTitle() != null)
         {
-            pageTitled.setCurrentConformanceLevel(pageTitled.getConformanceLevel());
+            criteria.setCurrentConformanceLevel(criteria.getConformanceLevel());
         }
         else
         {
-            pageTitled.setCurrentConformanceLevel(null);
+            criteria.setCurrentConformanceLevel(null);
         }
     }
 }

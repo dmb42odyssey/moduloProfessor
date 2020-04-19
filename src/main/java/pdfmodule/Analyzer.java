@@ -2,13 +2,10 @@ package pdfmodule;
 
 import database.SetupParameters;
 import datatype.ExtractionResult;
-import datatype.accessibility.AbstractCriteria;
+import datatype.accessibility.Criteria;
 import datatype.accessibility.AbstractGuideline;
 import datatype.accessibility.AbstractPrinciple;
 import datatype.accessibility.ConformanceLevel;
-import database.CriteriaDatabase.CriteriaConstants;
-import datatype.accessibility.WCAG.principle2.PageTitled;
-import datatype.accessibility.WCAG.principle3.LanguageOfPage;
 import datatype.accessibility.check.CheckAgent;
 import datatype.accessibility.check.CriteriaCheckFactory;
 import datatype.accessibility.check.ICriteriaCheck;
@@ -47,6 +44,8 @@ public class Analyzer {
     {
         SetupParameters setupParameters = new SetupParameters();
         principleList = setupParameters.buildDataSctructure();
+
+        /* Checking conformance test for all enabled criterias*/
         overallConformace = checkAllCriterias();
         return principleList;
     }
@@ -62,7 +61,7 @@ public class Analyzer {
         {
             for(AbstractGuideline guideline :principle.getGuidelineMap())
             {
-                for(AbstractCriteria criteria: guideline.getCriteriaList())
+                for(Criteria criteria: guideline.getCriteriaList())
                 {
                     /* Get respective check command */
                     ICriteriaCheck criteriaCheck = criteriaCheckFactory.getCriteriaCheck(criteria, document);
@@ -85,14 +84,14 @@ public class Analyzer {
 
     private ConformanceLevel obtainConformity()
     {
-        List<AbstractCriteria> criteriaList = new ArrayList<AbstractCriteria>();
+        List<Criteria> criteriaList = new ArrayList<Criteria>();
 
         /* Create a list with applicable criteria only */
         for(AbstractPrinciple principle : principleList)
         {
             for(AbstractGuideline guideline :principle.getGuidelineMap())
             {
-                for(AbstractCriteria criteria : guideline.getCriteriaList())
+                for(Criteria criteria : guideline.getCriteriaList())
                 {
                     if(criteria.getIsApplicable())
                     {
@@ -103,9 +102,9 @@ public class Analyzer {
         }
 
         /* Sort criterias based on conformity level (lowest to highest) */
-        criteriaList.sort(new Comparator<AbstractCriteria>() {
+        criteriaList.sort(new Comparator<Criteria>() {
             @Override
-            public int compare(AbstractCriteria ac1, AbstractCriteria ac2) {
+            public int compare(Criteria ac1, Criteria ac2) {
                 return ac1.getConformanceLevel().compareTo(ac2.getConformanceLevel());
             }
         });
@@ -114,7 +113,7 @@ public class Analyzer {
            with the obtained (current) conformance.*/
         ConformanceLevel finalConformanceLevel = criteriaList.get(criteriaList.size() - 1).getConformanceLevel();
 
-        for(AbstractCriteria criteria : criteriaList)
+        for(Criteria criteria : criteriaList)
         {
             if(criteria.getConformanceLevel() != criteria.getCurrentConformanceLevel())
             {
@@ -138,7 +137,7 @@ public class Analyzer {
             for(AbstractGuideline guideline :principle.getGuidelineMap())
             {
                 System.out.println("----" + guideline.getName());
-                for(AbstractCriteria criteria: guideline.getCriteriaList())
+                for(Criteria criteria: guideline.getCriteriaList())
                 {
                     System.out.println("--------" + criteria.getName() + " (" + criteria.getConformanceLevel() + ")");
                 }
